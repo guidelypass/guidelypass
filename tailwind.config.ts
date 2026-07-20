@@ -35,7 +35,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-jakarta)", ...defaultTheme.fontFamily.sans],
-        serif: ["var(--font-fraunces)", ...defaultTheme.fontFamily.serif],
+        serif: ["var(--font-playfair)", ...defaultTheme.fontFamily.serif],
       },
       typography: {
         DEFAULT: {

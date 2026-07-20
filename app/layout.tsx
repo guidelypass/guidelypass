@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
+import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { siteConfig } from "@/lib/site-config";
 
-const fraunces = Fraunces({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-playfair",
   weight: ["500", "600", "700"],
 });
 
@@ -39,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={`${fraunces.variable} ${jakarta.variable}`}>
+    <html lang="pt-BR" className={`${playfair.variable} ${jakarta.variable}`}>
       <body className="flex min-h-screen flex-col bg-cream font-sans text-ink antialiased">
         <Header />
         <main className="flex-1">{children}</main>
