@@ -57,7 +57,7 @@ export default function HomePage() {
             <Link
               key={region.slug}
               href="/destinations"
-              className="group overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-shadow hover:shadow-md"
+              className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-brand-100">
                 <Image
@@ -65,7 +65,7 @@ export default function HomePage() {
                   alt={region.name}
                   fill
                   sizes="(min-width: 1024px) 280px, 45vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover"
                 />
               </div>
               <div className="p-4">
@@ -95,14 +95,14 @@ export default function HomePage() {
               <Link
                 key={experience.slug}
                 href="/destinations"
-                className="group relative flex aspect-square items-end overflow-hidden rounded-xl"
+                className="relative flex aspect-square items-end overflow-hidden rounded-xl shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
               >
                 <Image
                   src={experience.image}
                   alt={experience.name}
                   fill
                   sizes="(min-width: 1024px) 280px, 45vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <span className="relative z-10 p-4 font-serif text-lg font-semibold text-white">
