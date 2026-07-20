@@ -25,10 +25,10 @@ export default function Header() {
             Destinos
           </Link>
           <Link
-            href="/destinations"
+            href="/como-funciona"
             className="text-sm font-medium text-gray-600 transition-colors duration-200 hover:text-brand-600"
           >
-            Experiências
+            Como Funciona
           </Link>
           <Link
             href="/about"
