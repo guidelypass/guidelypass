@@ -6,12 +6,13 @@ export const metadata: Metadata = {
   description: "Explore guias de viagem à venda para os principais destinos.",
 };
 
-export default function DestinationsPage({
+export default async function DestinationsPage({
   searchParams,
 }: {
-  searchParams: { q?: string };
+  searchParams: Promise<{ q?: string }>;
 }) {
-  const query = searchParams.q?.toLowerCase().trim();
+  const { q } = await searchParams;
+  const query = q?.toLowerCase().trim();
   const match = query
     ? regions
         .flatMap((region) => region.destinations)
