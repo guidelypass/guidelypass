@@ -9,9 +9,9 @@ export default function Header() {
           <Image
             src="/images/guidely-logo.png"
             alt="GuidelyPass"
-            width={500}
-            height={500}
-            className="h-14 w-14 object-contain"
+            width={1645}
+            height={778}
+            className="h-10 w-auto"
             priority
           />
         </Link>
