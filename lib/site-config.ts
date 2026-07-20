@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "GuidelyPass",
-  tagline: "Discover the World: Your Complete Destination Guides",
+  tagline: "Descubra o Mundo: Seus Guias Completos de Destino",
   description:
-    "GuidelyPass publishes in-depth, purchasable travel guides for popular destinations — what to bring, when to go, what to do, where to eat, and what to know before you land.",
+    "A GuidelyPass publica guias de viagem completos e detalhados para os principais destinos — o que levar, quando ir, o que fazer, onde comer e o que saber antes de embarcar.",
   url: "https://guidelypass.vercel.app",
 };
 
@@ -20,7 +20,7 @@ export type Region = {
 
 export const regions: Region[] = [
   {
-    name: "Europe",
+    name: "Europa",
     slug: "europe",
     destinations: [
       {
@@ -30,7 +30,7 @@ export const regions: Region[] = [
           "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=600&q=80",
       },
       {
-        name: "Rome",
+        name: "Roma",
         slug: "rome",
         image:
           "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=600&q=80",
@@ -38,11 +38,11 @@ export const regions: Region[] = [
     ],
   },
   {
-    name: "Asia",
+    name: "Ásia",
     slug: "asia",
     destinations: [
       {
-        name: "Tokyo",
+        name: "Tóquio",
         slug: "tokyo",
         image:
           "https://images.unsplash.com/photo-1565618754154-c8011e5df2a6?auto=format&fit=crop&w=600&q=80",
@@ -56,11 +56,11 @@ export const regions: Region[] = [
     ],
   },
   {
-    name: "Americas",
+    name: "Américas",
     slug: "americas",
     destinations: [
       {
-        name: "New York",
+        name: "Nova York",
         slug: "new-york",
         image:
           "https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&fit=crop&w=600&q=80",
@@ -74,11 +74,11 @@ export const regions: Region[] = [
     ],
   },
   {
-    name: "Africa",
+    name: "África",
     slug: "africa",
     destinations: [
       {
-        name: "Cape Town",
+        name: "Cidade do Cabo",
         slug: "cape-town",
         image:
           "https://images.unsplash.com/photo-1626894169601-482d26b23f35?auto=format&fit=crop&w=600&q=80",
@@ -101,25 +101,25 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
-    name: "Hiking",
+    name: "Trilhas",
     slug: "hiking",
     image:
       "https://images.unsplash.com/photo-1562593028-1fe2d15bde36?auto=format&fit=crop&w=600&q=80",
   },
   {
-    name: "Cultural Tours",
+    name: "Passeios Culturais",
     slug: "cultural-tours",
     image:
       "https://images.unsplash.com/photo-1538460120076-604b93a2ce88?auto=format&fit=crop&w=600&q=80",
   },
   {
-    name: "Wildlife",
+    name: "Vida Selvagem",
     slug: "wildlife",
     image:
       "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=600&q=80",
   },
   {
-    name: "Beaches",
+    name: "Praias",
     slug: "beaches",
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",

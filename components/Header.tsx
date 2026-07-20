@@ -1,16 +1,19 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-brand-100 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-        <Link href="/" className="flex items-center gap-2">
-          <span aria-hidden className="text-2xl">
-            🧭
-          </span>
-          <span className="text-xl font-extrabold tracking-tight text-brand-700">
-            Guidely<span className="font-medium text-brand-500">Pass</span>
-          </span>
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2">
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/images/guidely-logo.png"
+            alt="GuidelyPass"
+            width={500}
+            height={500}
+            className="h-14 w-14 object-contain"
+            priority
+          />
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
@@ -18,32 +21,32 @@ export default function Header() {
             href="/destinations"
             className="text-sm font-medium text-gray-600 transition-colors hover:text-brand-600"
           >
-            Destinations
+            Destinos
           </Link>
           <Link
             href="/destinations"
             className="text-sm font-medium text-gray-600 transition-colors hover:text-brand-600"
           >
-            Experiences
+            Experiências
           </Link>
           <Link
             href="/about"
             className="text-sm font-medium text-gray-600 transition-colors hover:text-brand-600"
           >
-            About
+            Sobre
           </Link>
           <Link
             href="/contact"
             className="text-sm font-medium text-gray-600 transition-colors hover:text-brand-600"
           >
-            Contact
+            Contato
           </Link>
         </nav>
 
         <div className="flex items-center gap-4">
           <Link
             href="/destinations"
-            aria-label="Search destinations"
+            aria-label="Buscar destinos"
             className="text-gray-500 transition-colors hover:text-brand-600"
           >
             <svg
@@ -62,7 +65,7 @@ export default function Header() {
           </Link>
           <Link
             href="/account"
-            aria-label="Sign in"
+            aria-label="Entrar"
             className="text-gray-500 transition-colors hover:text-brand-600"
           >
             <svg

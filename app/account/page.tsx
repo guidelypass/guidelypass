@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Account",
-  description: "Sign in to purchase and access your destination guides.",
+  title: "Conta",
+  description: "Entre para comprar e acessar seus guias de destino.",
 };
 
 export default function AccountPage() {
   return (
     <div className="mx-auto max-w-md px-4 py-16 text-center">
-      <h1 className="text-3xl font-extrabold text-gray-900">Sign In</h1>
+      <h1 className="text-3xl font-extrabold text-gray-900">Entrar</h1>
       <p className="mt-2 text-gray-600">
-        Account sign-in is launching alongside our first guides. You&apos;ll
-        be able to sign in with just your email — no password needed — when
-        you&apos;re ready to purchase a guide.
+        O login será lançado junto com nossos primeiros guias. Você vai poder
+        entrar apenas com seu e-mail — sem senha — quando estiver pronto para
+        comprar um guia.
       </p>
     </div>
   );
