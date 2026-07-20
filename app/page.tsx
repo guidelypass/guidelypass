@@ -6,19 +6,19 @@ export default function HomePage() {
   return (
     <div>
       <section className="border-b border-brand-100 bg-brand-50">
-        <div className="mx-auto max-w-6xl px-4 py-8 sm:py-12">
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl shadow-md">
-            <Image
-              src="/images/banner-guidely-ptbr.png"
-              alt="GuidelyPass — seu guia interativo de viagem para o mundo"
-              fill
-              sizes="(min-width: 1024px) 1152px, 100vw"
-              className="object-cover"
-              priority
-            />
-          </div>
+        <div className="relative aspect-[16/9] w-full overflow-hidden sm:aspect-[21/9]">
+          <Image
+            src="/images/banner-guidely-ptbr.png"
+            alt="GuidelyPass — seu guia interativo de viagem para o mundo"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+        </div>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:py-12">
+          <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/destinations"
               className="inline-block rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
