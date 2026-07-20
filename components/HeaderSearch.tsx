@@ -46,13 +46,15 @@ export default function HeaderSearch() {
     closeSearch();
   }
 
-  if (!open) {
-    return (
+  return (
+    <div className="relative flex items-center">
       <button
         type="button"
         aria-label="Buscar destinos"
         onClick={openSearch}
-        className="text-gray-500 transition-colors hover:text-brand-600"
+        className={`text-gray-500 transition-colors hover:text-brand-600 ${
+          open ? "invisible" : ""
+        }`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -68,39 +70,39 @@ export default function HeaderSearch() {
           <line x1="21" y1="21" x2="16.65" y2="16.65" />
         </svg>
       </button>
-    );
-  }
 
-  return (
-    <div className="relative">
-      <form onSubmit={handleSubmit} className="flex items-center">
-        <input
-          ref={inputRef}
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onBlur={() => setTimeout(closeSearch, 150)}
-          placeholder="Para onde você vai?"
-          className="w-40 rounded-full border border-brand-200 bg-white px-4 py-1.5 text-sm text-ink outline-none transition-all focus:w-56 focus:border-brand-400 sm:w-48 sm:focus:w-64"
-        />
-      </form>
+      {open && (
+        <div className="absolute right-0 top-1/2 z-20 -translate-y-1/2">
+          <form onSubmit={handleSubmit}>
+            <input
+              ref={inputRef}
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onBlur={() => setTimeout(closeSearch, 150)}
+              placeholder="Para onde você vai?"
+              className="w-48 rounded-full border border-brand-200 bg-white px-4 py-1.5 text-sm text-ink shadow-sm outline-none transition-all focus:border-brand-400 sm:w-64"
+            />
+          </form>
 
-      {results.length > 0 && (
-        <ul className="absolute right-0 top-full mt-2 w-64 overflow-hidden rounded-xl border border-gray-100 bg-white shadow-lg">
-          {results.map((destination) => (
-            <li key={destination.slug}>
-              <Link
-                href={`/destinations?q=${destination.slug}`}
-                className="flex items-center justify-between px-4 py-2 text-sm text-ink hover:bg-brand-50"
-              >
-                <span>{destination.name}</span>
-                <span className="text-xs text-gray-400">
-                  {destination.regionName}
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+          {results.length > 0 && (
+            <ul className="absolute right-0 top-full mt-2 w-64 overflow-hidden rounded-xl border border-gray-100 bg-white shadow-lg">
+              {results.map((destination) => (
+                <li key={destination.slug}>
+                  <Link
+                    href={`/destinations?q=${destination.slug}`}
+                    className="flex items-center justify-between px-4 py-2 text-sm text-ink hover:bg-brand-50"
+                  >
+                    <span>{destination.name}</span>
+                    <span className="text-xs text-gray-400">
+                      {destination.regionName}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       )}
     </div>
   );
