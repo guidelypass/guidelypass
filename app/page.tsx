@@ -10,7 +10,7 @@ export default function HomePage() {
           src="/images/banner-guidely-ptbr.png"
           alt="GuidelyPass — seu guia interativo de viagem para o mundo"
           width={1672}
-          height={571}
+          height={495}
           sizes="100vw"
           className="h-auto w-full"
           priority
