@@ -20,7 +20,7 @@ export default function HomePage() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/destinations"
-              className="inline-block rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
+              className="inline-block rounded-full bg-accent-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-700"
             >
               Explorar Destinos
             </Link>
@@ -37,7 +37,7 @@ export default function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-16">
         <div className="mb-8 flex items-end justify-between">
           <div>
-            <h2 className="text-2xl font-extrabold text-gray-900">
+            <h2 className="font-serif text-3xl font-semibold text-ink">
               Regiões em Destaque
             </h2>
             <p className="mt-1 text-gray-600">
@@ -57,7 +57,7 @@ export default function HomePage() {
             <Link
               key={region.slug}
               href="/destinations"
-              className="group overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-shadow hover:shadow-md"
+              className="group overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-shadow hover:shadow-md"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-brand-100">
                 <Image
@@ -69,7 +69,7 @@ export default function HomePage() {
                 />
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-gray-900">{region.name}</h3>
+                <h3 className="font-serif text-lg font-semibold text-ink">{region.name}</h3>
                 <p className="mt-1 text-sm text-gray-500">
                   {region.destinations.map((d) => d.name).join(", ")}
                 </p>
@@ -82,7 +82,7 @@ export default function HomePage() {
       <section className="border-t border-gray-100 bg-gray-50">
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div className="mb-8">
-            <h2 className="text-2xl font-extrabold text-gray-900">
+            <h2 className="font-serif text-3xl font-semibold text-ink">
               Experiências Populares
             </h2>
             <p className="mt-1 text-gray-600">
@@ -95,7 +95,7 @@ export default function HomePage() {
               <Link
                 key={experience.slug}
                 href="/destinations"
-                className="group relative flex aspect-square items-end overflow-hidden rounded-2xl"
+                className="group relative flex aspect-square items-end overflow-hidden rounded-xl"
               >
                 <Image
                   src={experience.image}
@@ -105,7 +105,7 @@ export default function HomePage() {
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                <span className="relative z-10 p-4 text-lg font-bold text-white">
+                <span className="relative z-10 p-4 font-serif text-lg font-semibold text-white">
                   {experience.name}
                 </span>
               </Link>
@@ -115,7 +115,7 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16 text-center">
-        <h2 className="text-2xl font-extrabold text-gray-900">
+        <h2 className="font-serif text-3xl font-semibold text-ink">
           Mais destinos em breve
         </h2>
         <p className="mx-auto mt-2 max-w-xl text-gray-600">

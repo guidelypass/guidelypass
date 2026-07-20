@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
   content: [
@@ -17,6 +18,24 @@ const config: Config = {
           700: "#29534f",
           900: "#1a3634",
         },
+        accent: {
+          50: "#fdf2ee",
+          100: "#fbe1d6",
+          200: "#f5c3ab",
+          300: "#eda179",
+          400: "#e57f4f",
+          500: "#e4572e",
+          600: "#c8451f",
+          700: "#9c3618",
+          800: "#7a2c15",
+          900: "#5c2412",
+        },
+        ink: "#171717",
+        cream: "#faf9f6",
+      },
+      fontFamily: {
+        sans: ["var(--font-jakarta)", ...defaultTheme.fontFamily.sans],
+        serif: ["var(--font-fraunces)", ...defaultTheme.fontFamily.serif],
       },
       typography: {
         DEFAULT: {

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import HeaderSearch from "@/components/HeaderSearch";
 
 export default function Header() {
   return (
@@ -44,25 +45,7 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Link
-            href="/destinations"
-            aria-label="Buscar destinos"
-            className="text-gray-500 transition-colors hover:text-brand-600"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-5 w-5"
-            >
-              <circle cx="11" cy="11" r="7" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </Link>
+          <HeaderSearch />
           <Link
             href="/account"
             aria-label="Entrar"
