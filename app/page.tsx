@@ -20,13 +20,13 @@ export default function HomePage() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/destinations"
-              className="inline-block rounded-full bg-accent-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-700"
+              className="inline-block rounded-full bg-accent-600 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 ease-out hover:bg-accent-700 hover:shadow-md"
             >
               Explorar Destinos
             </Link>
             <Link
               href="/about"
-              className="inline-block rounded-full border border-brand-200 bg-white px-6 py-3 text-sm font-semibold text-brand-700 transition-colors hover:border-brand-300 hover:bg-brand-50"
+              className="inline-block rounded-full border border-brand-200 bg-white px-6 py-3 text-sm font-semibold text-brand-700 transition-all duration-200 ease-out hover:border-brand-300 hover:bg-brand-50 hover:shadow-sm"
             >
               Planejar Minha Viagem
             </Link>
@@ -57,7 +57,7 @@ export default function HomePage() {
             <Link
               key={region.slug}
               href="/destinations"
-              className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+              className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-brand-100">
                 <Image
@@ -95,7 +95,7 @@ export default function HomePage() {
               <Link
                 key={experience.slug}
                 href="/destinations"
-                className="relative flex aspect-square items-end overflow-hidden rounded-xl shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                className="relative flex aspect-square items-end overflow-hidden rounded-xl shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md"
               >
                 <Image
                   src={experience.image}

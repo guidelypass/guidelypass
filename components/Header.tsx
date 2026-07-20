@@ -20,25 +20,25 @@ export default function Header() {
         <nav className="hidden items-center gap-6 md:flex">
           <Link
             href="/destinations"
-            className="text-sm font-medium text-gray-600 transition-colors hover:text-brand-600"
+            className="text-sm font-medium text-gray-600 transition-colors duration-200 hover:text-brand-600"
           >
             Destinos
           </Link>
           <Link
             href="/destinations"
-            className="text-sm font-medium text-gray-600 transition-colors hover:text-brand-600"
+            className="text-sm font-medium text-gray-600 transition-colors duration-200 hover:text-brand-600"
           >
             Experiências
           </Link>
           <Link
             href="/about"
-            className="text-sm font-medium text-gray-600 transition-colors hover:text-brand-600"
+            className="text-sm font-medium text-gray-600 transition-colors duration-200 hover:text-brand-600"
           >
             Sobre
           </Link>
           <Link
             href="/contact"
-            className="text-sm font-medium text-gray-600 transition-colors hover:text-brand-600"
+            className="text-sm font-medium text-gray-600 transition-colors duration-200 hover:text-brand-600"
           >
             Contato
           </Link>
@@ -49,7 +49,7 @@ export default function Header() {
           <Link
             href="/account"
             aria-label="Entrar"
-            className="text-gray-500 transition-colors hover:text-brand-600"
+            className="text-gray-500 transition-colors duration-200 hover:text-brand-600"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

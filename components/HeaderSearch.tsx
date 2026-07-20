@@ -52,7 +52,7 @@ export default function HeaderSearch() {
         type="button"
         aria-label="Buscar destinos"
         onClick={openSearch}
-        className={`text-gray-500 transition-colors hover:text-brand-600 ${
+        className={`text-gray-500 transition-all duration-200 hover:text-brand-600 ${
           open ? "invisible" : ""
         }`}
       >
@@ -71,39 +71,44 @@ export default function HeaderSearch() {
         </svg>
       </button>
 
-      {open && (
-        <div className="absolute right-0 top-1/2 z-20 -translate-y-1/2">
-          <form onSubmit={handleSubmit}>
-            <input
-              ref={inputRef}
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onBlur={() => setTimeout(closeSearch, 150)}
-              placeholder="Para onde você vai?"
-              className="w-48 rounded-full border border-brand-200 bg-white px-4 py-1.5 text-sm text-ink shadow-sm outline-none transition-all focus:border-brand-400 sm:w-64"
-            />
-          </form>
+      <div
+        className={`absolute right-0 top-1/2 z-20 -translate-y-1/2 transition-all duration-200 ease-out ${
+          open
+            ? "pointer-events-auto translate-x-0 opacity-100"
+            : "pointer-events-none translate-x-2 opacity-0"
+        }`}
+      >
+        <form onSubmit={handleSubmit}>
+          <input
+            ref={inputRef}
+            type="text"
+            tabIndex={open ? 0 : -1}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onBlur={() => setTimeout(closeSearch, 150)}
+            placeholder="Para onde você vai?"
+            className="w-48 rounded-full border border-brand-200 bg-white px-4 py-1.5 text-sm text-ink shadow-sm outline-none transition-all duration-200 focus:border-brand-400 focus:shadow-md sm:w-64"
+          />
+        </form>
 
-          {results.length > 0 && (
-            <ul className="absolute right-0 top-full mt-2 w-64 overflow-hidden rounded-xl border border-gray-100 bg-white shadow-lg">
-              {results.map((destination) => (
-                <li key={destination.slug}>
-                  <Link
-                    href={`/destinations?q=${destination.slug}`}
-                    className="flex items-center justify-between px-4 py-2 text-sm text-ink hover:bg-brand-50"
-                  >
-                    <span>{destination.name}</span>
-                    <span className="text-xs text-gray-400">
-                      {destination.regionName}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      )}
+        {results.length > 0 && (
+          <ul className="animate-dropdown-in absolute right-0 top-full mt-2 w-64 overflow-hidden rounded-xl border border-gray-100 bg-white shadow-lg">
+            {results.map((destination) => (
+              <li key={destination.slug}>
+                <Link
+                  href={`/destinations?q=${destination.slug}`}
+                  className="flex items-center justify-between px-4 py-2.5 text-sm text-ink transition-colors duration-150 hover:bg-brand-50"
+                >
+                  <span>{destination.name}</span>
+                  <span className="text-xs text-gray-400">
+                    {destination.regionName}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 }

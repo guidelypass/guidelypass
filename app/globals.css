@@ -5,3 +5,18 @@
 html {
   scroll-behavior: smooth;
 }
+
+@keyframes dropdown-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-dropdown-in {
+  animation: dropdown-appear 0.18s ease-out forwards;
+}
