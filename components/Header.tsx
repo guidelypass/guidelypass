@@ -13,7 +13,7 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="flex items-center gap-6">
+        <nav className="hidden items-center gap-6 md:flex">
           <Link
             href="/destinations"
             className="text-sm font-medium text-gray-600 transition-colors hover:text-brand-600"
@@ -21,12 +21,65 @@ export default function Header() {
             Destinations
           </Link>
           <Link
+            href="/destinations"
+            className="text-sm font-medium text-gray-600 transition-colors hover:text-brand-600"
+          >
+            Experiences
+          </Link>
+          <Link
             href="/about"
             className="text-sm font-medium text-gray-600 transition-colors hover:text-brand-600"
           >
             About
           </Link>
+          <Link
+            href="/contact"
+            className="text-sm font-medium text-gray-600 transition-colors hover:text-brand-600"
+          >
+            Contact
+          </Link>
         </nav>
+
+        <div className="flex items-center gap-4">
+          <Link
+            href="/destinations"
+            aria-label="Search destinations"
+            className="text-gray-500 transition-colors hover:text-brand-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-5 w-5"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </Link>
+          <Link
+            href="/account"
+            aria-label="Sign in"
+            className="text-gray-500 transition-colors hover:text-brand-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-5 w-5"
+            >
+              <path d="M20 21a8 8 0 0 0-16 0" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </Link>
+        </div>
       </div>
     </header>
   );
