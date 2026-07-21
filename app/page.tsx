@@ -41,7 +41,7 @@ export default function HomePage() {
             {destinations.map((destination) => (
               <Link
                 key={destination.slug}
-                href={`/destinations?q=${destination.slug}`}
+                href={`/destinations/${destination.slug}`}
                 className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md"
               >
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-brand-100">

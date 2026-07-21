@@ -96,7 +96,7 @@ export default function HeaderSearch() {
             {results.map((destination) => (
               <li key={destination.slug}>
                 <Link
-                  href={`/destinations?q=${destination.slug}`}
+                  href={`/destinations/${destination.slug}`}
                   className="flex items-center justify-between px-4 py-2.5 text-sm text-ink transition-colors duration-150 hover:bg-brand-50"
                 >
                   <span>{destination.name}</span>
