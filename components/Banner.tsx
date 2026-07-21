@@ -37,154 +37,116 @@ export default function Banner({ dict }: Props) {
   ];
 
   return (
-    <>
-      {/* ── Mobile: photo + right-side gradient overlay ── */}
-      <section className="relative md:hidden" style={{ height: "clamp(160px,48vw,280px)" }}>
-        <Image
-          src="/images/banner-guidely-ptbr.png"
-          alt={b.preHeadline}
-          fill
-          priority
-          className="object-cover object-left"
-          sizes="100vw"
-        />
-        {/* blue gradient from right */}
+    <section
+      className="relative w-full overflow-hidden"
+      style={{ height: "clamp(200px,34vw,495px)" }}
+    >
+      {/* Full-width background image */}
+      <Image
+        src="/images/banner-guidely-ptbr.png"
+        alt={b.preHeadline}
+        fill
+        priority
+        className="object-cover object-left"
+        sizes="100vw"
+      />
+
+      {/* Blue HTML panel overlaid on the right half — covers embedded image text */}
+      <div
+        className="absolute right-0 top-0 flex h-full flex-col justify-between overflow-hidden"
+        style={{
+          width: "48%",
+          background: "linear-gradient(135deg, #1a56c8 0%, #0e3fa8 45%, #091f6b 100%)",
+          padding: "clamp(14px,2.2vw,36px) clamp(12px,1.8vw,30px)",
+        }}
+      >
+        {/* Dot-grid world-map watermark */}
         <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(to left, #0e3fa8ee 38%, #0e3fa844 62%, transparent 80%)" }}
+          className="pointer-events-none absolute inset-0 opacity-[0.09]"
+          style={{
+            backgroundImage: "radial-gradient(rgba(255,255,255,1) 1px, transparent 1px)",
+            backgroundSize: "20px 20px",
+          }}
         />
-        <div className="absolute right-0 top-0 flex h-full w-[52%] flex-col justify-center pr-4">
-          <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-white/70">
+
+        {/* Airplane decoration */}
+        <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="pointer-events-none absolute bottom-4 right-6 rotate-45 text-white opacity-20"
+          style={{ width: "clamp(18px,2.6vw,38px)", height: "clamp(18px,2.6vw,38px)" }}
+        >
+          <path d="M21 16l-11-4L2 5l4 4.5L2 12l8-2 1 5.5L17 13l4 3z" />
+        </svg>
+
+        {/* Logo + subtitle */}
+        <div className="relative flex flex-col">
+          <Image
+            src="/images/guidely-logo.png"
+            alt="GuidelyPass"
+            width={1645}
+            height={778}
+            className="w-auto"
+            style={{ height: "clamp(20px,2.6vw,38px)" }}
+          />
+          <p
+            className="mt-0.5 font-bold uppercase text-white/60"
+            style={{ fontSize: "clamp(5px,0.55vw,8px)", letterSpacing: "0.2em" }}
+          >
+            {b.logoSubtitle}
+          </p>
+        </div>
+
+        {/* Main headline */}
+        <div className="relative">
+          <p
+            className="font-semibold uppercase text-white/75"
+            style={{ fontSize: "clamp(7px,0.8vw,11px)", letterSpacing: "0.22em" }}
+          >
             {b.preHeadline}
           </p>
           <p
             className="font-black uppercase leading-none tracking-tight text-white"
-            style={{ fontSize: "clamp(18px,5.5vw,34px)" }}
+            style={{ fontSize: "clamp(20px,3.8vw,56px)" }}
           >
             {b.headline1}
           </p>
           <p
             className="font-black uppercase leading-none tracking-tight text-cyan-300"
-            style={{ fontSize: "clamp(18px,5.5vw,34px)" }}
+            style={{ fontSize: "clamp(20px,3.8vw,56px)" }}
           >
             {b.headline2}
           </p>
         </div>
-      </section>
 
-      {/* ── Desktop: split layout matching the reference ── */}
-      <section
-        className="relative hidden w-full overflow-hidden md:flex"
-        style={{ height: "clamp(280px,34vw,495px)" }}
-      >
-        {/* Left: airport photo (crops out the text on the right of the source image) */}
-        <div className="relative w-[52%] flex-shrink-0 overflow-hidden">
-          <Image
-            src="/images/banner-guidely-ptbr.png"
-            alt={b.preHeadline}
-            fill
-            priority
-            className="object-cover object-left"
-            sizes="52vw"
-          />
-        </div>
-
-        {/* Right: blue HTML panel — replaces the embedded text in the image */}
-        <div
-          className="relative flex flex-1 flex-col justify-between overflow-hidden"
-          style={{
-            background: "linear-gradient(135deg, #1a56c8 0%, #0e3fa8 45%, #091f6b 100%)",
-            padding: "clamp(16px,2.4vw,38px) clamp(14px,2vw,32px)",
-          }}
-        >
-          {/* Dot-grid world-map watermark */}
-          <div
-            className="pointer-events-none absolute inset-0 opacity-[0.09]"
-            style={{
-              backgroundImage: "radial-gradient(rgba(255,255,255,1) 1px, transparent 1px)",
-              backgroundSize: "20px 20px",
-            }}
-          />
-
-          {/* Airplane decoration */}
-          <svg
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="pointer-events-none absolute bottom-4 right-6 rotate-45 text-white opacity-20"
-            style={{ width: "clamp(20px,2.8vw,40px)", height: "clamp(20px,2.8vw,40px)" }}
-          >
-            <path d="M21 16l-11-4L2 5l4 4.5L2 12l8-2 1 5.5L17 13l4 3z" />
-          </svg>
-
-          {/* Logo + subtitle */}
-          <div className="relative flex flex-col">
-            <Image
-              src="/images/guidely-logo.png"
-              alt="GuidelyPass"
-              width={1645}
-              height={778}
-              className="w-auto"
-              style={{ height: "clamp(20px,2.8vw,40px)" }}
-            />
-            <p
-              className="mt-0.5 font-bold uppercase text-white/60"
-              style={{ fontSize: "clamp(6px,0.6vw,9px)", letterSpacing: "0.2em" }}
+        {/* Three features */}
+        <div className="relative flex items-start">
+          {features.map(({ icon, text }, i) => (
+            <div
+              key={i}
+              className="flex flex-col items-center"
+              style={{
+                paddingLeft: i > 0 ? "clamp(8px,1.2vw,20px)" : undefined,
+                paddingRight: i < 2 ? "clamp(8px,1.2vw,20px)" : undefined,
+                borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.2)" : undefined,
+              }}
             >
-              {b.logoSubtitle}
-            </p>
-          </div>
-
-          {/* Main headline */}
-          <div className="relative">
-            <p
-              className="font-semibold uppercase text-white/75"
-              style={{ fontSize: "clamp(7px,0.85vw,12px)", letterSpacing: "0.22em" }}
-            >
-              {b.preHeadline}
-            </p>
-            <p
-              className="font-black uppercase leading-none tracking-tight text-white"
-              style={{ fontSize: "clamp(22px,3.8vw,56px)" }}
-            >
-              {b.headline1}
-            </p>
-            <p
-              className="font-black uppercase leading-none tracking-tight text-cyan-300"
-              style={{ fontSize: "clamp(22px,3.8vw,56px)" }}
-            >
-              {b.headline2}
-            </p>
-          </div>
-
-          {/* Three features */}
-          <div className="relative flex items-start">
-            {features.map(({ icon, text }, i) => (
-              <div
-                key={i}
-                className="flex flex-col items-center"
-                style={{
-                  paddingLeft: i > 0 ? "clamp(10px,1.4vw,22px)" : undefined,
-                  paddingRight: i < 2 ? "clamp(10px,1.4vw,22px)" : undefined,
-                  borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.2)" : undefined,
-                }}
+              <span
+                className="text-white"
+                style={{ width: "clamp(12px,1.6vw,24px)", height: "clamp(12px,1.6vw,24px)" }}
               >
-                <span
-                  className="text-white"
-                  style={{ width: "clamp(14px,1.8vw,26px)", height: "clamp(14px,1.8vw,26px)" }}
-                >
-                  {icon}
-                </span>
-                <p
-                  className="mt-1 text-center font-bold uppercase leading-tight text-white"
-                  style={{ fontSize: "clamp(6px,0.68vw,9.5px)", letterSpacing: "0.12em" }}
-                >
-                  {text}
-                </p>
-              </div>
-            ))}
-          </div>
+                {icon}
+              </span>
+              <p
+                className="mt-1 text-center font-bold uppercase leading-tight text-white"
+                style={{ fontSize: "clamp(5px,0.62vw,9px)", letterSpacing: "0.12em" }}
+              >
+                {text}
+              </p>
+            </div>
+          ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
