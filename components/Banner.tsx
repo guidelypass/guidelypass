@@ -7,12 +7,12 @@ type Props = {
 };
 
 const bannerMap: Record<Locale, string> = {
-  pt: "/images/banner-portugues.png",
-  en: "/images/banner-ingles.png",
-  fr: "/images/banner-frances.png",
-  de: "/images/banner-alemao.png",
-  es: "/images/banner-espanhol.png",
-  zh: "/images/banner-china.png",
+  pt: "/images/banner-portugues.jpeg",
+  en: "/images/banner-ingles.jpeg",
+  fr: "/images/banner-frances.jpeg",
+  de: "/images/banner-alemao.jpeg",
+  es: "/images/banner-espanhol.jpeg",
+  zh: "/images/banner-chines.jpeg",
 };
 
 export default function Banner({ lang, dict }: Props) {
