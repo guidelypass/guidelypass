@@ -1,4 +1,13 @@
 const zh = {
+  banner: {
+    logoSubtitle: "您的旅程，完美引导。",
+    preHeadline: "您的互动旅行指南",
+    headline1: "探索",
+    headline2: "全世界",
+    feature1: "探索新目的地",
+    feature2: "发现最佳体验",
+    feature3: "活在每个当下",
+  },
   meta: {
     tagline: "探索世界：您的完整旅行指南",
     description:

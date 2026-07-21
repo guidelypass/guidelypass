@@ -1,4 +1,13 @@
 const pt = {
+  banner: {
+    logoSubtitle: "SUA VIAGEM, GUIADA COM PERFEIÇÃO.",
+    preHeadline: "SEU GUIA INTERATIVO DE VIAGEM",
+    headline1: "PARA EXPLORAR",
+    headline2: "O MUNDO",
+    feature1: "DESCUBRA NOVOS DESTINOS",
+    feature2: "ENCONTRE AS MELHORES EXPERIÊNCIAS",
+    feature3: "VIVA CADA MOMENTO",
+  },
   meta: {
     tagline: "Descubra o Mundo: Seus Guias Completos de Destino",
     description:

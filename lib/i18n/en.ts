@@ -1,4 +1,13 @@
 const en = {
+  banner: {
+    logoSubtitle: "YOUR JOURNEY, PERFECTLY GUIDED.",
+    preHeadline: "YOUR INTERACTIVE TRAVEL GUIDE",
+    headline1: "TRAVEL THE",
+    headline2: "WORLD",
+    feature1: "DISCOVER NEW DESTINATIONS",
+    feature2: "FIND THE BEST EXPERIENCES",
+    feature3: "LIVE EVERY MOMENT",
+  },
   meta: {
     tagline: "Discover the World: Your Complete Destination Guides",
     description:

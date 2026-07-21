@@ -1,4 +1,13 @@
 const de = {
+  banner: {
+    logoSubtitle: "DEINE REISE, PERFEKT GEFÜHRT.",
+    preHeadline: "DEIN INTERAKTIVER REISEFÜHRER",
+    headline1: "ZUM REISEN",
+    headline2: "IN DIE WELT",
+    feature1: "ENTDECKE NEUE ZIELE",
+    feature2: "FINDE DIE BESTEN ERLEBNISSE",
+    feature3: "LEBE JEDEN MOMENT",
+  },
   meta: {
     tagline: "Die Welt entdecken: Ihre vollständigen Reiseführer",
     description:

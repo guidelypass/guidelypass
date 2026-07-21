@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getDictionary, isValidLocale, type Locale } from "@/lib/i18n";
 import { regions, experiences, siteConfig } from "@/lib/site-config";
 import { notFound } from "next/navigation";
+import Banner from "@/components/Banner";
 
 export async function generateMetadata({
   params,
@@ -26,8 +27,6 @@ export default async function HomePage({
   const dict = await getDictionary(lang);
   const locale = lang as Locale;
 
-  const bannerSrc = "/images/banner-guidely-ptbr.png";
-
   const destinations = regions.flatMap((region) =>
     region.destinations.map((d) => ({
       slug: d.slug,
@@ -39,18 +38,7 @@ export default async function HomePage({
 
   return (
     <div>
-      {/* Banner */}
-      <section>
-        <Image
-          src={bannerSrc}
-          alt={dict.meta.tagline}
-          width={1672}
-          height={495}
-          sizes="100vw"
-          className="h-auto w-full"
-          priority
-        />
-      </section>
+      <Banner lang={locale} dict={dict} />
 
       {/* Destinos */}
       <section className="bg-white py-14">
