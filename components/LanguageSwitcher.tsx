@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { locales, localeLabels, type Locale } from "@/lib/i18n";
 
@@ -10,6 +10,7 @@ type Props = {
 
 export default function LanguageSwitcher({ currentLang }: Props) {
   const [open, setOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const ref = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const router = useRouter();
@@ -25,11 +26,14 @@ export default function LanguageSwitcher({ currentLang }: Props) {
   }, []);
 
   function switchTo(locale: Locale) {
+    if (locale === currentLang) { setOpen(false); return; }
     setOpen(false);
-    // Replace the first path segment (current lang) with the new one
     const segments = pathname.split("/");
     segments[1] = locale;
-    router.push(segments.join("/") || "/");
+    const newPath = segments.join("/") || "/";
+    startTransition(() => {
+      router.push(newPath);
+    });
   }
 
   return (
@@ -38,21 +42,34 @@ export default function LanguageSwitcher({ currentLang }: Props) {
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-label="Change language"
-        className="flex items-center gap-1.5 rounded-full px-2 py-1.5 text-sm font-medium text-gray-500 transition-colors duration-200 hover:bg-gray-100 hover:text-brand-600"
+        className={`flex items-center gap-1.5 rounded-full px-2 py-1.5 text-sm font-medium transition-all duration-200 hover:bg-gray-100 hover:text-brand-600 ${
+          isPending ? "text-brand-400" : "text-gray-500"
+        }`}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={1.75}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="h-4 w-4"
-        >
-          <circle cx="12" cy="12" r="10" />
-          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-        </svg>
+        {isPending ? (
+          <svg
+            className="h-4 w-4 animate-spin"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth={3} />
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={1.75}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-4 w-4"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          </svg>
+        )}
         <span className="hidden sm:inline">{localeLabels[currentLang]}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
