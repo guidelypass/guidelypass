@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import HeaderSearch from "@/components/HeaderSearch";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { regions } from "@/lib/site-config";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
@@ -60,13 +61,14 @@ export default async function Header({ lang }: Props) {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
           <HeaderSearch
             lang={lang}
             destinations={destinations}
             placeholder={dict.search.placeholder}
             searchLabel={dict.search.label}
           />
+          <LanguageSwitcher currentLang={lang} />
           <Link
             href={`/${lang}/account`}
             aria-label={dict.account.title}
