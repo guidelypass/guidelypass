@@ -3,16 +3,22 @@
 import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { regions } from "@/lib/site-config";
+import type { Locale } from "@/lib/i18n";
 
-const allDestinations = regions.flatMap((region) =>
-  region.destinations.map((destination) => ({
-    ...destination,
-    regionName: region.name,
-  }))
-);
+type DestinationItem = {
+  slug: string;
+  name: string;
+  regionName: string;
+};
 
-export default function HeaderSearch() {
+type Props = {
+  lang: Locale;
+  destinations: DestinationItem[];
+  placeholder: string;
+  searchLabel: string;
+};
+
+export default function HeaderSearch({ lang, destinations, placeholder, searchLabel }: Props) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -21,10 +27,10 @@ export default function HeaderSearch() {
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return [];
-    return allDestinations
-      .filter((destination) => destination.name.toLowerCase().includes(q))
+    return destinations
+      .filter((d) => d.name.toLowerCase().includes(q))
       .slice(0, 6);
-  }, [query]);
+  }, [query, destinations]);
 
   function openSearch() {
     setOpen(true);
@@ -39,9 +45,9 @@ export default function HeaderSearch() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (results[0]) {
-      router.push(`/destinations?q=${encodeURIComponent(results[0].slug)}`);
+      router.push(`/${lang}/destinations?q=${encodeURIComponent(results[0].slug)}`);
     } else {
-      router.push(`/destinations?q=${encodeURIComponent(query)}`);
+      router.push(`/${lang}/destinations?q=${encodeURIComponent(query)}`);
     }
     closeSearch();
   }
@@ -50,7 +56,7 @@ export default function HeaderSearch() {
     <div className="relative flex items-center">
       <button
         type="button"
-        aria-label="Buscar destinos"
+        aria-label={searchLabel}
         onClick={openSearch}
         className={`text-gray-500 transition-all duration-200 hover:text-brand-600 ${
           open ? "invisible" : ""
@@ -86,23 +92,21 @@ export default function HeaderSearch() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onBlur={() => setTimeout(closeSearch, 150)}
-            placeholder="Para onde você vai?"
+            placeholder={placeholder}
             className="w-48 rounded-full border border-brand-200 bg-white px-4 py-1.5 text-sm text-ink shadow-sm outline-none transition-all duration-200 focus:border-brand-400 focus:shadow-md sm:w-64"
           />
         </form>
 
         {results.length > 0 && (
           <ul className="animate-dropdown-in absolute right-0 top-full mt-2 w-64 overflow-hidden rounded-xl border border-gray-100 bg-white shadow-lg">
-            {results.map((destination) => (
-              <li key={destination.slug}>
+            {results.map((d) => (
+              <li key={d.slug}>
                 <Link
-                  href={`/destinations/${destination.slug}`}
+                  href={`/${lang}/destinations/${d.slug}`}
                   className="flex items-center justify-between px-4 py-2.5 text-sm text-ink transition-colors duration-150 hover:bg-brand-50"
                 >
-                  <span>{destination.name}</span>
-                  <span className="text-xs text-gray-400">
-                    {destination.regionName}
-                  </span>
+                  <span>{d.name}</span>
+                  <span className="text-xs text-gray-400">{d.regionName}</span>
                 </Link>
               </li>
             ))}

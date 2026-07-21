@@ -3,54 +3,68 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { regions } from "@/lib/site-config";
+import { getDictionary, isValidLocale, locales, type Locale } from "@/lib/i18n";
 
-const allDestinations = regions.flatMap((region) =>
-  region.destinations.map((d) => ({ ...d, regionName: region.name }))
+const allSlugs = regions.flatMap((r) => r.destinations.map((d) => d.slug));
+const imageMap = Object.fromEntries(
+  regions.flatMap((r) =>
+    r.destinations.map((d) => [d.slug, { image: d.image, regionSlug: r.slug }])
+  )
 );
 
 export async function generateStaticParams() {
-  return allDestinations.map((d) => ({ slug: d.slug }));
+  return locales.flatMap((lang) =>
+    allSlugs.map((slug) => ({ lang, slug }))
+  );
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const destination = allDestinations.find((d) => d.slug === slug);
-  if (!destination) return {};
+  const { lang, slug } = await params;
+  if (!isValidLocale(lang)) return {};
+  const dict = await getDictionary(lang);
+  const dest = dict.destinations[slug as keyof typeof dict.destinations];
+  if (!dest) return {};
   return {
-    title: destination.name,
-    description: destination.intro.slice(0, 160),
+    title: dest.name,
+    description: dest.intro.slice(0, 160),
+    alternates: {
+      languages: Object.fromEntries(
+        locales.map((l) => [l, `/${l}/destinations/${slug}`])
+      ),
+    },
   };
 }
-
-const previewItems = [
-  "Roteiro detalhado dia a dia com horários e rotas sugeridas",
-  "Os melhores restaurantes por bairro e faixa de preço",
-  "Hospedagem recomendada — de hostels a hotéis boutique",
-  "Como chegar, como se locomover e quanto gastar com transporte",
-  "Dicas de segurança, costumes locais e o que não fazer",
-  "Contatos de emergência e informações consulares",
-];
 
 export default async function DestinationPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const destination = allDestinations.find((d) => d.slug === slug);
-  if (!destination) notFound();
+  const { lang, slug } = await params;
+  if (!isValidLocale(lang)) notFound();
+  const locale = lang as Locale;
+  const dict = await getDictionary(locale);
+
+  const dest = dict.destinations[slug as keyof typeof dict.destinations];
+  if (!dest) notFound();
+
+  const struct = imageMap[slug];
+  if (!struct) notFound();
+
+  const regionName = dict.regions[struct.regionSlug as keyof typeof dict.regions].name;
+  const d = dict.destinationPage;
 
   return (
     <div>
       {/* Hero */}
       <section className="relative h-72 sm:h-96 lg:h-[480px]">
         <Image
-          src={destination.image}
-          alt={destination.name}
+          src={struct.image}
+          alt={dest.name}
           fill
           sizes="100vw"
           className="object-cover"
@@ -60,24 +74,24 @@ export default async function DestinationPage({
         <div className="absolute bottom-0 left-0 right-0">
           <div className="mx-auto max-w-6xl px-4 pb-10">
             <p className="text-sm font-medium uppercase tracking-widest text-white/70">
-              {destination.regionName} · {destination.country}
+              {regionName} · {dest.country}
             </p>
             <h1 className="mt-1 text-5xl font-bold text-white sm:text-6xl">
-              {destination.name}
+              {dest.name}
             </h1>
           </div>
         </div>
       </section>
 
-      {/* Fatos rápidos */}
+      {/* Quick facts */}
       <section className="border-b border-gray-100 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-6">
           <dl className="grid grid-cols-2 gap-6 sm:grid-cols-4">
             {[
-              { label: "País", value: destination.country },
-              { label: "Idioma", value: destination.language },
-              { label: "Moeda", value: destination.currency },
-              { label: "Melhor época", value: destination.bestTime },
+              { label: d.country, value: dest.country },
+              { label: d.language, value: dest.language },
+              { label: d.currency, value: dest.currency },
+              { label: d.bestTime, value: dest.bestTime },
             ].map(({ label, value }) => (
               <div key={label}>
                 <dt className="text-xs font-semibold uppercase tracking-wide text-gray-400">
@@ -90,29 +104,27 @@ export default async function DestinationPage({
         </div>
       </section>
 
-      {/* Introdução */}
+      {/* Intro */}
       <section className="bg-white py-12">
         <div className="mx-auto max-w-3xl px-4">
           <h2 className="text-2xl font-bold text-ink">
-            Sobre {destination.name}
+            {d.aboutPrefix} {dest.name}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-gray-600">
-            {destination.intro}
+            {dest.intro}
           </p>
         </div>
       </section>
 
-      {/* Destaques */}
+      {/* Highlights */}
       <section className="border-t border-gray-100 bg-gray-50 py-14">
         <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-2xl font-bold text-ink">
-            O que não pode faltar
-          </h2>
+          <h2 className="text-2xl font-bold text-ink">{d.mustSeeTitle}</h2>
           <p className="mt-1 text-sm text-gray-500">
-            Uma amostra do que esperar em {destination.name}.
+            {d.mustSeeSubtitle} {dest.name}.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {destination.highlights.map(({ title, description }) => (
+            {dest.highlights.map(({ title, description }) => (
               <div
                 key={title}
                 className="rounded-xl bg-white p-5 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
@@ -127,19 +139,16 @@ export default async function DestinationPage({
         </div>
       </section>
 
-      {/* Preview bloqueado */}
+      {/* Blurred preview */}
       <section className="bg-white py-14">
         <div className="mx-auto max-w-3xl px-4">
-          <h2 className="text-2xl font-bold text-ink">
-            O guia completo inclui muito mais
-          </h2>
+          <h2 className="text-2xl font-bold text-ink">{d.fullGuideTitle}</h2>
           <p className="mt-2 text-sm text-gray-500">
-            O que você viu acima é apenas uma amostra. O guia completo de{" "}
-            {destination.name} cobre cada detalhe da sua viagem.
+            {d.fullGuideSubtitle1} {dest.name} {d.fullGuideSubtitle2}
           </p>
           <div className="relative mt-6 overflow-hidden rounded-xl border border-gray-200 bg-gray-50 p-6">
-            <ul className="space-y-3 select-none blur-sm">
-              {previewItems.map((item) => (
+            <ul className="select-none space-y-3 blur-sm">
+              {d.previewItems.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-gray-700">
                   <span className="mt-0.5 h-4 w-4 flex-shrink-0 rounded-full bg-brand-200" />
                   {item}
@@ -160,7 +169,7 @@ export default async function DestinationPage({
                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
               <p className="mt-2 text-sm font-semibold text-ink">
-                Disponível no guia completo
+                {d.lockedLabel}
               </p>
             </div>
           </div>
@@ -171,34 +180,29 @@ export default async function DestinationPage({
       <section className="border-t border-brand-100 bg-brand-50 py-16">
         <div className="mx-auto max-w-2xl px-4 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-brand-500">
-            Guia de viagem
+            {d.ctaLabel}
           </p>
           <h2 className="mt-2 text-3xl font-bold text-ink">
-            Viaje para {destination.name} sem improviso
+            {d.ctaHeading1} {dest.name} {d.ctaHeading2}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-gray-600">
-            O guia completo de {destination.name} reúne tudo que você precisa
-            saber em um único documento — roteiro, gastronomia, hospedagem,
-            transporte e dicas locais — para você aproveitar cada dia ao máximo.
+            {d.ctaText1} {dest.name} {d.ctaText2}
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
-              href="/contact"
+              href={`/${locale}/contact`}
               className="inline-block rounded-full bg-accent-600 px-8 py-3.5 text-sm font-semibold text-white transition-all duration-200 ease-out hover:bg-accent-700 hover:shadow-md"
             >
-              Quero o guia de {destination.name}
+              {d.ctaButton1} {dest.name}{d.ctaButton2 ? ` ${d.ctaButton2}` : ""}
             </Link>
             <Link
-              href="/"
+              href={`/${locale}/destinations`}
               className="inline-block rounded-full border border-gray-200 bg-white px-8 py-3.5 text-sm font-semibold text-gray-600 transition-all duration-200 ease-out hover:border-gray-300 hover:bg-gray-50"
             >
-              Ver outros destinos
+              {d.ctaSecondary}
             </Link>
           </div>
-          <p className="mt-5 text-xs text-gray-400">
-            Guias em fase de lançamento. Entre em contato para ser avisado em
-            primeira mão.
-          </p>
+          <p className="mt-5 text-xs text-gray-400">{d.ctaNote}</p>
         </div>
       </section>
     </div>

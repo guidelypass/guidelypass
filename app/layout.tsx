@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { siteConfig } from "@/lib/site-config";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -14,30 +13,33 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | ${siteConfig.tagline}`,
+    default: `${siteConfig.name} | Discover the World`,
     template: `%s | ${siteConfig.name}`,
   },
-  description: siteConfig.description,
+  description:
+    "GuidelyPass publishes complete, detailed travel guides for top destinations.",
   openGraph: {
     type: "website",
     url: siteConfig.url,
     siteName: siteConfig.name,
     title: siteConfig.name,
-    description: siteConfig.description,
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") || "/en";
+  const segment = pathname.split("/")[1];
+  const lang = ["en", "pt"].includes(segment) ? segment : "en";
+
   return (
-    <html lang="pt-BR" className={jakarta.variable}>
+    <html lang={lang} className={jakarta.variable}>
       <body className="flex min-h-screen flex-col bg-cream font-sans text-ink antialiased">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

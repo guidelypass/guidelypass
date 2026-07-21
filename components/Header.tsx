@@ -1,12 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
 import HeaderSearch from "@/components/HeaderSearch";
+import { regions } from "@/lib/site-config";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
-export default function Header() {
+type Props = {
+  lang: Locale;
+};
+
+export default async function Header({ lang }: Props) {
+  const dict = await getDictionary(lang);
+
+  const destinations = regions.flatMap((region) =>
+    region.destinations.map((d) => ({
+      slug: d.slug,
+      name: dict.destinations[d.slug as keyof typeof dict.destinations].name,
+      regionName: dict.regions[region.slug as keyof typeof dict.regions].name,
+    }))
+  );
+
   return (
     <header className="sticky top-0 z-50 border-b border-brand-100 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2">
-        <Link href="/" className="flex items-center">
+        <Link href={`/${lang}`} className="flex items-center">
           <Image
             src="/images/guidely-logo.png"
             alt="GuidelyPass"
@@ -19,36 +35,41 @@ export default function Header() {
 
         <nav className="hidden items-center gap-6 md:flex">
           <Link
-            href="/destinations"
+            href={`/${lang}/destinations`}
             className="text-sm font-medium text-gray-600 transition-colors duration-200 hover:text-brand-600"
           >
-            Destinos
+            {dict.nav.destinations}
           </Link>
           <Link
-            href="/como-funciona"
+            href={`/${lang}/how-it-works`}
             className="text-sm font-medium text-gray-600 transition-colors duration-200 hover:text-brand-600"
           >
-            Como Funciona
+            {dict.nav.howItWorks}
           </Link>
           <Link
-            href="/about"
+            href={`/${lang}/about`}
             className="text-sm font-medium text-gray-600 transition-colors duration-200 hover:text-brand-600"
           >
-            Sobre
+            {dict.nav.about}
           </Link>
           <Link
-            href="/contact"
+            href={`/${lang}/contact`}
             className="text-sm font-medium text-gray-600 transition-colors duration-200 hover:text-brand-600"
           >
-            Contato
+            {dict.nav.contact}
           </Link>
         </nav>
 
         <div className="flex items-center gap-4">
-          <HeaderSearch />
+          <HeaderSearch
+            lang={lang}
+            destinations={destinations}
+            placeholder={dict.search.placeholder}
+            searchLabel={dict.search.label}
+          />
           <Link
-            href="/account"
-            aria-label="Entrar"
+            href={`/${lang}/account`}
+            aria-label={dict.account.title}
             className="text-gray-500 transition-colors duration-200 hover:text-brand-600"
           >
             <svg
