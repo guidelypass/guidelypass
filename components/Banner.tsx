@@ -6,16 +6,24 @@ type Props = {
   dict: Dictionary;
 };
 
-export default function Banner({ dict }: Props) {
+const bannerMap: Record<Locale, string> = {
+  pt: "/images/banner-portugues.png",
+  en: "/images/banner-ingles.png",
+  fr: "/images/banner-frances.png",
+  de: "/images/banner-alemao.png",
+  es: "/images/banner-espanhol.png",
+  zh: "/images/banner-china.png",
+};
+
+export default function Banner({ lang, dict }: Props) {
   return (
-    <section>
+    <section className="relative h-[500px] w-full overflow-hidden">
       <Image
-        src="/images/banner-guidely-ptbr.png"
+        src={bannerMap[lang]}
         alt={dict.banner.preHeadline}
-        width={1672}
-        height={495}
+        fill
         sizes="100vw"
-        className="h-auto w-full"
+        className="object-cover object-center"
         priority
       />
     </section>
