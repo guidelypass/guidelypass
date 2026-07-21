@@ -25,7 +25,7 @@ export default async function DestinationsPage({
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
-      <h1 className="font-serif text-4xl font-semibold text-ink">Destinos</h1>
+      <h1 className="text-4xl font-semibold text-ink">Destinos</h1>
       {match ? (
         <p className="mt-2 text-gray-600">
           O guia de <strong>{match.name}</strong> está sendo escrito agora.

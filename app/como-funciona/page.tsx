@@ -138,7 +138,7 @@ export default function HowItWorksPage() {
       {/* Hero */}
       <section className="border-b border-gray-100 bg-cream py-14 sm:py-20">
         <div className="mx-auto max-w-2xl px-4 text-center">
-          <h1 className="font-serif text-4xl font-semibold text-ink sm:text-5xl">
+          <h1 className="text-4xl font-semibold text-ink sm:text-5xl">
             Como funciona
           </h1>
           <p className="mt-5 text-base leading-relaxed text-gray-600 sm:text-lg">
@@ -177,10 +177,10 @@ export default function HowItWorksPage() {
                 {i < 2 && (
                   <div className="absolute left-full top-8 hidden w-10 -translate-x-5 border-t-2 border-dashed border-brand-100 sm:block" />
                 )}
-                <span className="font-serif text-5xl font-semibold text-brand-100">
+                <span className="text-5xl font-semibold text-brand-100">
                   {step}
                 </span>
-                <h3 className="mt-3 font-serif text-xl font-semibold text-ink">
+                <h3 className="mt-3 text-xl font-semibold text-ink">
                   {title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-gray-500">
@@ -196,7 +196,7 @@ export default function HowItWorksPage() {
       <section className="border-t border-gray-100 bg-brand-50 py-16">
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-10 text-center">
-            <h2 className="font-serif text-3xl font-semibold text-ink">
+            <h2 className="text-3xl font-semibold text-ink">
               O que está incluído em cada guia
             </h2>
             <p className="mt-2 text-gray-600">
@@ -228,7 +228,7 @@ export default function HowItWorksPage() {
       {/* CTA */}
       <section className="border-t border-gray-100 bg-white py-14 text-center">
         <div className="mx-auto max-w-xl px-4">
-          <h2 className="font-serif text-2xl font-semibold text-ink">
+          <h2 className="text-2xl font-semibold text-ink">
             Pronto para planejar sua viagem?
           </h2>
           <p className="mt-2 text-gray-600">

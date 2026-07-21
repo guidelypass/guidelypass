@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function AccountPage() {
   return (
     <div className="mx-auto max-w-md px-4 py-16 text-center">
-      <h1 className="font-serif text-4xl font-semibold text-ink">Entrar</h1>
+      <h1 className="text-4xl font-semibold text-ink">Entrar</h1>
       <p className="mt-2 text-gray-600">
         O login será lançado junto com nossos primeiros guias. Você vai poder
         entrar apenas com seu e-mail — sem senha — quando estiver pronto para

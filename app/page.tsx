@@ -27,7 +27,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-8 flex items-end justify-between">
             <div>
-              <h2 className="font-serif text-3xl font-semibold text-ink">Destinos</h2>
+              <h2 className="text-3xl font-semibold text-ink">Destinos</h2>
               <p className="mt-1 text-gray-600">Encontre o guia para o seu próximo destino.</p>
             </div>
             <Link
@@ -54,7 +54,7 @@ export default function HomePage() {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-serif text-lg font-semibold text-ink">
+                  <h3 className="text-lg font-semibold text-ink">
                     {destination.name}
                   </h3>
                   <p className="mt-0.5 text-xs font-medium uppercase tracking-wide text-brand-500">
@@ -71,7 +71,7 @@ export default function HomePage() {
       <section className="border-t border-gray-100 bg-gray-50 py-14">
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-8">
-            <h2 className="font-serif text-3xl font-semibold text-ink">Experiências</h2>
+            <h2 className="text-3xl font-semibold text-ink">Experiências</h2>
             <p className="mt-1 text-gray-600">
               Encontre guias organizados pelo que você quer fazer.
             </p>
@@ -91,7 +91,7 @@ export default function HomePage() {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                <span className="relative z-10 p-4 font-serif text-lg font-semibold text-white">
+                <span className="relative z-10 p-4 text-lg font-semibold text-white">
                   {experience.name}
                 </span>
               </Link>
@@ -103,7 +103,7 @@ export default function HomePage() {
       {/* CTA em breve */}
       <section className="bg-brand-900 py-14 text-center">
         <div className="mx-auto max-w-xl px-4">
-          <h2 className="font-serif text-3xl font-semibold text-white">
+          <h2 className="text-3xl font-semibold text-white">
             Primeiros guias chegam em breve
           </h2>
           <p className="mt-3 text-brand-200">
