@@ -87,7 +87,7 @@ export default function Banner({ dict }: Props) {
             width={1645}
             height={778}
             className="w-auto"
-            style={{ height: "clamp(20px,2.6vw,38px)" }}
+            style={{ height: "clamp(20px,2.6vw,38px)", filter: "brightness(0) invert(1)" }}
           />
           <p
             className="mt-0.5 font-bold uppercase text-white/60"
