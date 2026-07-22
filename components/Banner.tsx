@@ -16,17 +16,15 @@ const bannerMap: Record<Locale, string> = {
 };
 
 export default function Banner({ lang, dict }: Props) {
+  const src = bannerMap[lang];
+  const alt = dict.banner.preHeadline;
+
   return (
     <section>
-      <Image
-        src={bannerMap[lang]}
-        alt={dict.banner.preHeadline}
-        width={1672}
-        height={818}
-        sizes="100vw"
-        className="h-auto w-full"
-        priority
-      />
+      <div className="relative w-full overflow-hidden aspect-[3/4] sm:hidden">
+        <Image src={src} alt={alt} fill sizes="100vw" className="object-cover object-center" priority />
+      </div>
+      <Image src={src} alt={alt} width={1672} height={818} sizes="100vw" className="hidden h-auto w-full sm:block" priority />
     </section>
   );
 }
