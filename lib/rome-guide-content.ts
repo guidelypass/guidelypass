@@ -441,6 +441,42 @@ const pt: RomeContent = {
       cost: "Gratuito",
       image: "https://images.unsplash.com/photo-1571462574-a9e49b8f19a3?w=900&q=80",
     },
+    {
+      name: "Villa Pamphilj",
+      neighborhood: "Gianicolense",
+      category: "park",
+      weather: "outdoor",
+      profiles: ["family", "couple", "friends"],
+      description:
+        "O maior parque público de Roma, com aproximadamente 184 hectares de jardins à inglesa, bosques de pinheiros e ciprestes, lagos e prados abertos. Construído no século XVII pela família Pamphilj, o parque conserva a villa barroca original e é frequentado quase exclusivamente pelos romanos do bairro — nenhuma fila, nenhuma multidão turística. Ideal para uma manhã tranquila longe do centro histórico.",
+      duration: "2–4 horas",
+      cost: "Gratuito",
+      image: "https://images.unsplash.com/photo-1563191911-e65a2c7d3090?w=900&q=80",
+    },
+    {
+      name: "Villa Ada",
+      neighborhood: "Salario / Trieste",
+      category: "park",
+      weather: "outdoor",
+      profiles: ["family", "couple", "friends"],
+      description:
+        "Com cerca de 160 hectares, Villa Ada é o segundo maior parque de Roma e o favorito das famílias que vivem no norte da cidade. Percorrida por trilhas sombreadas, tem um lago artificial com pedalinhos, áreas para piquenique e uma atmosfera tranquila e burguesa muito diferente da agitação do centro. Em verão recebe o Roma Incontra il Mondo, um dos maiores festivais de música ao ar livre da cidade.",
+      duration: "2–3 horas",
+      cost: "Gratuito",
+      image: "https://images.unsplash.com/photo-1543002588-84ebe14a5a8e?w=900&q=80",
+    },
+    {
+      name: "Villa Torlonia",
+      neighborhood: "Nomentano",
+      category: "park",
+      weather: "outdoor",
+      profiles: ["family", "couple", "friends"],
+      description:
+        "Antigo palacete da família nobre Torlonia, depois cedido a Mussolini como residência oficial entre 1925 e 1943. O parque de cerca de 13 hectares é elegante e bem cuidado, com a villa principal transformada em museu, um casino neogotico e um peculiar bunker antiaéreo visitável. Uma das visitas mais inusitadas de Roma, completamente fora do roteiro turístico convencional.",
+      duration: "1,5–2 horas",
+      cost: "Parque gratuito (museus €5–10)",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80",
+    },
     // Neighborhoods
     {
       name: "Trastevere",
@@ -962,6 +998,42 @@ const en: RomeContent = {
       duration: "2–4 hours",
       cost: "Free",
       image: "https://images.unsplash.com/photo-1571462574-a9e49b8f19a3?w=900&q=80",
+    },
+    {
+      name: "Villa Pamphilj",
+      neighborhood: "Gianicolense",
+      category: "park" as const,
+      weather: "outdoor" as const,
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "Rome's largest public park, covering approximately 184 hectares of English-style gardens, pine and cypress woodland, lakes and open meadows. Built in the 17th century by the Pamphilj family, the park preserves the original baroque villa and is visited almost exclusively by local Romans — no queues, no tourist crowds. Perfect for a quiet morning away from the historic centre.",
+      duration: "2–4 hours",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1563191911-e65a2c7d3090?w=900&q=80",
+    },
+    {
+      name: "Villa Ada",
+      neighborhood: "Salario / Trieste",
+      category: "park" as const,
+      weather: "outdoor" as const,
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "At around 160 hectares, Villa Ada is Rome's second largest park and the favourite of families living in the north of the city. Crossed by shaded paths, it has an artificial lake with pedal boats, picnic areas and a calm, residential atmosphere very different from the bustle of the centre. In summer it hosts Roma Incontra il Mondo, one of the city's largest open-air music festivals.",
+      duration: "2–3 hours",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1543002588-84ebe14a5a8e?w=900&q=80",
+    },
+    {
+      name: "Villa Torlonia",
+      neighborhood: "Nomentano",
+      category: "park" as const,
+      weather: "outdoor" as const,
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "Former estate of the noble Torlonia family, later given to Mussolini as his official residence from 1925 to 1943. The elegant 13-hectare park contains the main villa converted into a museum, a neo-Gothic casino and a curious air-raid bunker open to visitors. One of Rome's most unusual visits, completely off the mainstream tourist circuit.",
+      duration: "1.5–2 hours",
+      cost: "Park free (museums €5–10)",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80",
     },
     // Neighborhoods
     {
