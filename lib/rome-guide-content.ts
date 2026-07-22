@@ -657,9 +657,454 @@ const en: RomeContent = {
         "Not mandatory, but appreciated. 10% in sit-down restaurants is fine. Not customary at bar counters.",
     },
   ],
-  attractions: pt.attractions.map((a) => ({ ...a })), // Reuse with original names (they're proper nouns)
-  top5: pt.top5.map((t) => ({ ...t })),
-  whereToEat: pt.whereToEat.map((r) => ({ ...r })),
+  attractions: [
+    // Monuments
+    {
+      name: "Colosseum",
+      neighborhood: "Historic Centre",
+      category: "monument" as const,
+      weather: "both" as const,
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "The largest amphitheatre ever built, constructed in the 1st century AD to hold up to 80,000 spectators. Stage of gladiatorial combat and public spectacles, it is the ultimate symbol of the Roman Empire. Book tickets in advance — same-day queues exceed two hours.",
+      duration: "2–3 hours",
+      cost: "€18",
+      image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=900&q=80",
+    },
+    {
+      name: "Roman Forum",
+      neighborhood: "Historic Centre",
+      category: "monument" as const,
+      weather: "outdoor" as const,
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "The political and social heart of Ancient Rome, where senators debated and emperors paraded in triumph. Walking among its temples, arches and basilicas is to cross two thousand years of history in a few steps. Entry is included with the Colosseum ticket.",
+      duration: "1–2 hours",
+      cost: "Included with Colosseum",
+      image: "https://images.unsplash.com/photo-1590077428593-a55bb07c4665?w=900&q=80",
+    },
+    {
+      name: "Palatine Hill",
+      neighborhood: "Historic Centre",
+      category: "monument" as const,
+      weather: "outdoor" as const,
+      profiles: ["couple", "friends"] as ProfileTag[],
+      description:
+        "One of Rome's seven hills and the legendary birthplace of the city, where Romulus is said to have founded Rome. The ruins of the imperial palaces offer sweeping panoramic views over the Roman Forum and the Circus Maximus. Included with the Colosseum ticket and far less crowded.",
+      duration: "1 hour",
+      cost: "Included with Colosseum",
+      image: "https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?w=900&q=80",
+    },
+    {
+      name: "Pantheon",
+      neighborhood: "Historic Centre",
+      category: "monument" as const,
+      weather: "indoor" as const,
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "Built in 125 AD, it is the best-preserved building from Antiquity in the world. Its dome with the famous open oculus to the sky remains one of the greatest engineering marvels in human history — two thousand years later, it is still the world's largest unreinforced concrete dome.",
+      duration: "30–45 min",
+      cost: "€5",
+      image: "https://images.unsplash.com/photo-1529154166925-574a0236a4f4?w=900&q=80",
+    },
+    {
+      name: "Castel Sant'Angelo",
+      neighborhood: "Prati",
+      category: "monument" as const,
+      weather: "both" as const,
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "Originally built as Emperor Hadrian's mausoleum in the 2nd century, the castle served as a fortress, prison and papal residence over the centuries. The interior tour reveals richly decorated rooms at every level. From the terrace, the view over the Tiber and St Peter's Basilica is one of Rome's finest.",
+      duration: "1.5–2 hours",
+      cost: "€15",
+      image: "https://images.unsplash.com/photo-1555992828-ca4dbe41d294?w=900&q=80",
+    },
+    {
+      name: "Arch of Constantine",
+      neighborhood: "Historic Centre",
+      category: "monument" as const,
+      weather: "outdoor" as const,
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "Erected in 315 AD to celebrate Constantine's victory over Maxentius, it is the largest triumphal arch in Rome and one of the best-preserved from Antiquity. Located between the Colosseum and the Palatine Hill, it can be visited for free — an unmissable stop on any Historic Centre itinerary.",
+      duration: "15–20 min",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=900&q=80",
+    },
+    {
+      name: "Circus Maximus",
+      neighborhood: "Aventine",
+      category: "monument" as const,
+      weather: "outdoor" as const,
+      profiles: ["family", "friends"] as ProfileTag[],
+      description:
+        "The largest stadium of Antiquity, with a capacity of 250,000 spectators, was the stage for the chariot races that thrilled Romans for hours. Today it is an archaeological park where locals walk, picnic and exercise — one of the most authentic experiences in Rome.",
+      duration: "30–45 min",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1515542622106-078bda9088b2?w=900&q=80",
+    },
+    {
+      name: "Via Appia Antica",
+      neighborhood: "Appia Antica",
+      category: "monument" as const,
+      weather: "outdoor" as const,
+      profiles: ["couple", "friends"] as ProfileTag[],
+      description:
+        "The 'queen of roads', built in 312 BC to connect Rome with southern Italy, still preserves large stretches of its original stone paving. Flanked by century-old umbrella pines, mausoleums and ancient tombstones, it is one of Rome's most evocative experiences — especially on Sunday afternoons, when the road is closed to traffic.",
+      duration: "2–3 hours",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1543002588-84ebe14a5a8e?w=900&q=80",
+    },
+    // Museums
+    {
+      name: "Vatican Museums & Sistine Chapel",
+      neighborhood: "Vatican",
+      category: "museum" as const,
+      weather: "indoor" as const,
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "One of the world's largest museum complexes, with over 70,000 works accumulated by the popes over centuries. The route culminates in the Sistine Chapel, where Michelangelo's ceiling painted between 1508 and 1512 stands as one of the greatest works of art in human history. Book months in advance — same-day queues reach four hours.",
+      duration: "3–4 hours",
+      cost: "€17–27",
+      image: "https://images.unsplash.com/photo-1506700065-54c9aca14cda?w=900&q=80",
+    },
+    {
+      name: "Galleria Borghese",
+      neighborhood: "Villa Borghese",
+      category: "museum" as const,
+      weather: "indoor" as const,
+      profiles: ["couple", "friends"] as ProfileTag[],
+      description:
+        "Considered the 'queen of private galleries', it holds the largest collection of sculptures by Gian Lorenzo Bernini as well as key works by Caravaggio, Raphael and Titian. Entry is strictly by reservation with fixed two-hour sessions — a format that guarantees an intimate, uncrowded experience. Book weeks in advance.",
+      duration: "2 hours (fixed session)",
+      cost: "€15",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80",
+    },
+    {
+      name: "Capitoline Museums",
+      neighborhood: "Capitoline Hill",
+      category: "museum" as const,
+      weather: "indoor" as const,
+      profiles: ["couple", "friends"] as ProfileTag[],
+      description:
+        "The world's oldest public museums, founded in 1471 by Pope Sixtus IV. The collection includes the famous Capitoline Wolf, the gilded equestrian statue of Marcus Aurelius and exceptional Greek and Roman sculptures. From the terrace, the view over the Roman Forum is simply extraordinary.",
+      duration: "2–3 hours",
+      cost: "€15",
+      image: "https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=900&q=80",
+    },
+    {
+      name: "Centrale Montemartini",
+      neighborhood: "Ostiense",
+      category: "museum" as const,
+      weather: "indoor" as const,
+      profiles: ["couple", "friends"] as ProfileTag[],
+      description:
+        "A hidden gem: extraordinary Greek and Roman sculptures displayed inside a 1930s industrial power plant. The contrast between ancient marble and 20th-century iron machines creates a visually fascinating and utterly unique atmosphere. One of Rome's most surprising visits for those who have already seen the main museums.",
+      duration: "1.5–2 hours",
+      cost: "€8",
+      image: "https://images.unsplash.com/photo-1516796181074-bf453fbfa3e6?w=900&q=80",
+    },
+    {
+      name: "Museo Nazionale Romano",
+      neighborhood: "Termini",
+      category: "museum" as const,
+      weather: "indoor" as const,
+      profiles: ["friends"] as ProfileTag[],
+      description:
+        "Spread across four sites, it houses one of the world's largest collections of Roman art. The Palazzo Massimo alle Terme branch is the most impressive, with frescoes and mosaics from imperial villas that rarely appear in mainstream guides. A low-tourist, high-quality visit.",
+      duration: "1.5–2 hours",
+      cost: "€10",
+      image: "https://images.unsplash.com/photo-1569930784474-e1f6c4e73aad?w=900&q=80",
+    },
+    // Churches
+    {
+      name: "St Peter's Basilica",
+      neighborhood: "Vatican",
+      category: "church" as const,
+      weather: "both" as const,
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "The world's largest Christian basilica, built over the tomb of the apostle Peter. With works by Michelangelo — including the Pietà and the dome design — as well as pieces by Bernini and Raphael, it is one of the greatest artistic ensembles in human history. Entry is free. Climbing the dome offers the best elevated view of Rome.",
+      duration: "1.5–2 hours",
+      cost: "Free (dome €8–10)",
+      image: "https://images.unsplash.com/photo-1597423498219-04418210827d?w=900&q=80",
+    },
+    {
+      name: "San Giovanni in Laterano",
+      neighborhood: "Laterano",
+      category: "church" as const,
+      weather: "indoor" as const,
+      profiles: ["couple", "friends"] as ProfileTag[],
+      description:
+        "The Pope's official cathedral and Rome's oldest Christian basilica, founded by Emperor Constantine in the 4th century. It is historically more important than St Peter's — seat of the Bishop of Rome for nearly a thousand years. Much less visited than the other great basilicas, making for a calmer, more contemplative experience.",
+      duration: "45 min",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1548783300-77a5b3a01ccd?w=900&q=80",
+    },
+    {
+      name: "San Clemente al Laterano",
+      neighborhood: "Laterano",
+      category: "church" as const,
+      weather: "indoor" as const,
+      profiles: ["couple", "friends"] as ProfileTag[],
+      description:
+        "One of Rome's most fascinating visits: three layers of history stacked directly on top of each other. On the upper level, a 12th-century medieval basilica with golden mosaics. Below, a 4th-century early Christian basilica. Deeper still, a 1st-century AD Mithraeum. A literal journey through time.",
+      duration: "1 hour",
+      cost: "€10",
+      image: "https://images.unsplash.com/photo-1589395937658-0557e7d89fad?w=900&q=80",
+    },
+    {
+      name: "San Luigi dei Francesi",
+      neighborhood: "Historic Centre",
+      category: "church" as const,
+      weather: "indoor" as const,
+      profiles: ["couple", "friends"] as ProfileTag[],
+      description:
+        "A church that conceals three monumental paintings by Caravaggio in the Contarelli Chapel. 'The Calling of Saint Matthew', 'Saint Matthew and the Angel' and 'The Martyrdom of Saint Matthew' are considered among the most important works in art history. The play of light and shadow Caravaggio invented here changed Western painting forever.",
+      duration: "20–30 min",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1551524559-8af4e6624178?w=900&q=80",
+    },
+    {
+      name: "Santa Maria in Trastevere",
+      neighborhood: "Trastevere",
+      category: "church" as const,
+      weather: "indoor" as const,
+      profiles: ["couple", "friends"] as ProfileTag[],
+      description:
+        "Considered the first church dedicated to the Virgin Mary in Rome, founded in the 3rd century. The 12th-century Byzantine golden mosaics in the apse are extraordinary — depicting the Virgin enthroned beside Christ, a revolutionary image for the era. The piazza in front is one of Trastevere's liveliest spots at night.",
+      duration: "30 min",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1579033461380-adb47c35ef55?w=900&q=80",
+    },
+    // Squares & Fountains
+    {
+      name: "Trevi Fountain",
+      neighborhood: "Historic Centre",
+      category: "square" as const,
+      weather: "both" as const,
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "The world's largest and most famous baroque fountain, sculpted by Nicola Salvi in the 18th century and completed in 1762. Neptune dominates the scene on a shell-shaped chariot, flanked by sea horses and tritons. The tradition of tossing a coin over your left shoulder with your right hand to guarantee a return to Rome is known worldwide.",
+      duration: "30–45 min",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1515542622106-078bda9088b2?w=900&q=80",
+    },
+    {
+      name: "Piazza Navona",
+      neighborhood: "Historic Centre",
+      category: "square" as const,
+      weather: "both" as const,
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "Rome's most beautiful baroque piazza, built over the oval stadium of Emperor Domitian in the 1st century AD — the elongated shape of the square still reveals the exact footprint of the ancient stadium. It has three fountains, the most famous being Bernini's Fontana dei Quattro Fiumi with its Egyptian obelisk. Artists, cafés and life all day long.",
+      duration: "30–60 min",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1598346762291-aee88549193f?w=900&q=80",
+    },
+    {
+      name: "Spanish Steps & Piazza di Spagna",
+      neighborhood: "Historic Centre",
+      category: "square" as const,
+      weather: "both" as const,
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "The Trinità dei Monti staircase, with its 135 steps built between 1723 and 1725, is one of Rome's most iconic landmarks. In spring it is covered in pink azaleas, creating one of the city's most photographed images. At the base, Bernini's father's Fontana della Barcaccia, dating from 1627.",
+      duration: "30–45 min",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1594818898109-44004cf25e76?w=900&q=80",
+    },
+    {
+      name: "Piazza del Popolo",
+      neighborhood: "Flaminio",
+      category: "square" as const,
+      weather: "outdoor" as const,
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "One of Rome's largest and most imposing piazzas, with a 3,200-year-old Egyptian obelisk at its centre. For centuries it was the arrival point for travelers coming from northern Europe via the Via Flaminia. The twin churches flanking the entrance to Via del Corso create one of Rome's most elegant urban scenes.",
+      duration: "30–45 min",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1568822617270-2c1e0f5f0b0c?w=900&q=80",
+    },
+    {
+      name: "Campo de' Fiori",
+      neighborhood: "Historic Centre",
+      category: "square" as const,
+      weather: "outdoor" as const,
+      profiles: ["couple", "friends"] as ProfileTag[],
+      description:
+        "Rome's most lively piazza, famous for its morning market selling fruit, vegetables, spices and flowers that has operated for centuries. The statue of Giordano Bruno at its centre recalls that it was here the philosopher was burned by the Inquisition in 1600. By night it becomes the favourite meeting spot for young Romans and foreign students.",
+      duration: "30–60 min",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1578846655962-b13a2b60ef66?w=900&q=80",
+    },
+    {
+      name: "Piazza Venezia & Altar of the Fatherland",
+      neighborhood: "Historic Centre",
+      category: "square" as const,
+      weather: "both" as const,
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "The Altare della Patria — nicknamed by Romans the 'typewriter' or 'wedding cake' — is the imposing white marble monument erected in 1911 to celebrate Italian unification. The panoramic terrace at the top offers the best and most sweeping 360° view of Rome, including the Forum and the Colosseum.",
+      duration: "30–60 min",
+      cost: "Free (terrace €7)",
+      image: "https://images.unsplash.com/photo-1600200424-7e8d25b8cedc?w=900&q=80",
+    },
+    // Parks
+    {
+      name: "Villa Borghese",
+      neighborhood: "Villa Borghese",
+      category: "park" as const,
+      weather: "outdoor" as const,
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "Rome's largest public park, with 80 hectares of formal gardens, fountains, lakes and pavilions. Besides the Galleria Borghese, it houses the Carlo Bilotti Museum, the zoo and the Pincio terrace with the best panoramic view of the city at sunset. An oasis of calm in the heart of the city.",
+      duration: "2–4 hours",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1571462574-a9e49b8f19a3?w=900&q=80",
+    },
+    // Neighborhoods
+    {
+      name: "Trastevere",
+      neighborhood: "Trastevere",
+      category: "neighborhood" as const,
+      weather: "both" as const,
+      profiles: ["couple", "friends"] as ProfileTag[],
+      description:
+        "Rome's most charming and authentic neighbourhood, continuously inhabited since Antiquity. Cobblestone alleys covered in ivy, medieval rust-coloured façades, the smell of Roman cooking drifting from open windows. Quiet and picturesque by day; the heart of Roman social life by night. The Rome that Romans love.",
+      duration: "2–3 hours",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1579033461380-adb47c35ef55?w=900&q=80",
+    },
+    {
+      name: "Quartiere Coppedè",
+      neighborhood: "Trieste",
+      category: "neighborhood" as const,
+      weather: "outdoor" as const,
+      profiles: ["couple", "friends"] as ProfileTag[],
+      description:
+        "An extraordinary neighbourhood designed by architect Gino Coppedè between 1913 and 1926 in a style that freely mixes Art Nouveau, Neo-Baroque, Neo-Medieval and fantastic elements. Façades decorated with mosaics, arabesques, salamanders and gargoyles look as though they come from a fairy tale. One of Rome's best-kept secrets.",
+      duration: "45–60 min",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1607097938359-58f65eb49be9?w=900&q=80",
+    },
+    // Experiences
+    {
+      name: "Knights of Malta Keyhole",
+      neighborhood: "Aventine",
+      category: "experience" as const,
+      weather: "outdoor" as const,
+      profiles: ["couple", "friends"] as ProfileTag[],
+      description:
+        "On top of the Aventine Hill, a simple green wooden door with a keyhole perfectly frames, at the end of a long perfectly aligned avenue of cypress trees, the dome of St Peter's Basilica — creating an optical perspective across three countries (Italy, the Sovereign Order of Malta's territory and the Vatican State) in a single image. One of Rome's most magical and underrated sights.",
+      duration: "30 min",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1560707854-fb9a38bce5ef?w=900&q=80",
+    },
+    {
+      name: "Catacombs of Domitilla",
+      neighborhood: "Appia Antica",
+      category: "experience" as const,
+      weather: "indoor" as const,
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "Rome's largest catacombs, with over 17 km of underground galleries carved into volcanic tufa and 2nd-century frescoes. Resting place of more than 150,000 early Christians, including martyrs. The guided tour (compulsory) takes visitors tens of metres underground — a unique historical and sensory experience.",
+      duration: "1–1.5 hours",
+      cost: "€10",
+      image: "https://images.unsplash.com/photo-1543002588-84ebe14a5a8e?w=900&q=80",
+    },
+    {
+      name: "Parco degli Acquedotti",
+      neighborhood: "Appia Antica",
+      category: "experience" as const,
+      weather: "outdoor" as const,
+      profiles: ["couple", "friends"] as ProfileTag[],
+      description:
+        "An archaeological park where 2,000-year-old Roman aqueducts cross open fields in an almost bucolic landscape. Six of Rome's eleven great aqueducts passed through here, carrying water over dozens of kilometres from the mountains to the heart of the city. Romans come here to walk, picnic and run — no tourists, no queues, no ticket.",
+      duration: "1.5–2 hours",
+      cost: "Free",
+      image: "https://images.unsplash.com/photo-1590077428593-a55bb07c4665?w=900&q=80",
+    },
+  ],
+  top5: [
+    {
+      name: "Colosseum",
+      description:
+        "The world's most famous Roman amphitheatre is the ultimate symbol of the Empire's greatness. No visit to Rome is complete without stepping inside — from within, the scale of the place is even more striking than in photographs.",
+      tip: "Book online in advance. The ticket includes the Roman Forum and Palatine Hill — use all three on the same day.",
+      image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&q=80",
+    },
+    {
+      name: "Vatican Museums & Sistine Chapel",
+      description:
+        "The largest art collection accumulated in human history, crowned by Michelangelo's ceiling in the Sistine Chapel. Even visitors with little interest in art are left speechless.",
+      tip: "Book months in advance. Evening tours (a few dates per year) let you see the Sistine Chapel nearly empty.",
+      image: "https://images.unsplash.com/photo-1506700065-54c9aca14cda?w=800&q=80",
+    },
+    {
+      name: "Trevi Fountain",
+      description:
+        "The world's largest baroque fountain, setting of films and of one of the most famous tourist traditions in the world. It is impossible not to stop and stare.",
+      tip: "Visit in the early hours of the morning (2–4 am) to find it lit up and almost empty. During the day it is always packed.",
+      image: "https://images.unsplash.com/photo-1515542622106-078bda9088b2?w=800&q=80",
+    },
+    {
+      name: "Pantheon",
+      description:
+        "The best-preserved building from Antiquity. Two thousand years later, its dome still impresses architects and engineers from around the world.",
+      tip: "Arrive early. On rainy days, water falls through the central oculus and drains through the marble floor — a rare and beautiful sight.",
+      image: "https://images.unsplash.com/photo-1529154166925-574a0236a4f4?w=800&q=80",
+    },
+    {
+      name: "St Peter's Basilica",
+      description:
+        "The world's largest and most imposing Christian basilica, with works by Michelangelo, Bernini and Raphael in every detail. Bernini's surrounding piazza is one of the most beautiful in the world.",
+      tip: "Entry is free, but shoulders and knees must be covered. Arrive early to avoid queues at the security entrance.",
+      image: "https://images.unsplash.com/photo-1597423498219-04418210827d?w=800&q=80",
+    },
+  ],
+  whereToEat: [
+    {
+      name: "Trattoria Da Enzo al 29",
+      neighborhood: "Trastevere",
+      type: "Traditional trattoria",
+      priceRange: "€€",
+      profiles: ["couple", "friends"] as ProfileTag[],
+      description:
+        "One of Trastevere's most authentic trattorias, with no tourist menu. The cacio e pepe and carciofo alla romana are unmissable. Book in advance — it is always full.",
+      mustOrder: "Cacio e pepe, carciofo alla romana",
+    },
+    {
+      name: "Supplì Roma",
+      neighborhood: "Trastevere / Centre",
+      type: "Street food",
+      priceRange: "€",
+      profiles: ["family", "friends"] as ProfileTag[],
+      description:
+        "Rome's best supplì house — fried rice balls filled with ragù and mozzarella. Roman street food at its finest, quick and delicious, perfect between sightseeing stops.",
+      mustOrder: "Supplì al telefono, pizza al taglio",
+    },
+    {
+      name: "Gelateria dei Gracchi",
+      neighborhood: "Prati",
+      type: "Artisan gelateria",
+      priceRange: "€",
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "Considered by many to be Rome's best gelateria. The flavours are made with seasonal fruit and high-quality ingredients. The pistachio and gianduja are extraordinary.",
+      mustOrder: "Pistachio, gianduja, seasonal fruit",
+    },
+    {
+      name: "Osteria dell'Angelo",
+      neighborhood: "Prati",
+      type: "Roman osteria",
+      priceRange: "€€",
+      profiles: ["family", "couple", "friends"] as ProfileTag[],
+      description:
+        "Rotating fixed menu with Roman classics — carbonara, amatriciana, abbacchio. No elaborate décor, frequented by locals from the neighbourhood.",
+      mustOrder: "Carbonara, abbacchio alla cacciatora",
+    },
+  ],
   lockedTeasers: {
     s06: "Day-optimized itineraries for 2, 3, 4 or 5 days in Rome, with variations for families, couples and groups of friends. Each day includes suggested times, travel durations and rainy-day alternatives.",
     s07: "Every neighborhood in Rome has its own identity. The complete guide covers the main neighborhoods with what to do, where to eat, where to stay and the best time to visit each one.",
