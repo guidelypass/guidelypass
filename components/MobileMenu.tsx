@@ -17,19 +17,11 @@ export default function MobileMenu({ lang, navItems, accountLabel }: Props) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  useEffect(() => { setOpen(false); }, [pathname]);
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [open]);
 
   return (
@@ -48,67 +40,91 @@ export default function MobileMenu({ lang, navItems, accountLabel }: Props) {
         </svg>
       </button>
 
-      <div
-        aria-hidden="true"
-        onClick={() => setOpen(false)}
-        className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
-          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
-      />
-
-      <div
-        role="dialog"
-        aria-modal="true"
-        aria-label="Menu de navegação"
-        className={`fixed inset-y-0 right-0 z-50 flex w-[280px] flex-col bg-white shadow-2xl transition-transform duration-300 ease-out md:hidden ${
-          open ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex items-center justify-between border-b border-gray-100 px-5 py-4">
-          <span className="text-sm font-semibold tracking-wide text-gray-500 uppercase">
-            Navegação
-          </span>
-          <button
-            type="button"
-            aria-label="Fechar menu"
+      {open && (
+        <>
+          {/* Backdrop */}
+          <div
+            aria-hidden="true"
             onClick={() => setOpen(false)}
-            className="flex h-8 w-8 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600"
-          >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          </button>
-        </div>
+            style={{ position: "fixed", inset: 0, zIndex: 40, background: "rgba(0,0,0,0.4)" }}
+          />
 
-        <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-3 py-5">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`flex items-center rounded-xl px-4 py-3.5 text-[15px] font-medium transition-colors duration-150 ${
-                pathname.startsWith(item.href)
-                  ? "bg-brand-50 text-brand-600"
-                  : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="border-t border-gray-100 px-3 py-4">
-          <Link
-            href={`/${lang}/account`}
-            className="flex items-center gap-3 rounded-xl px-4 py-3 text-[15px] font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          {/* Painel lateral */}
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu de navegação"
+            style={{
+              position: "fixed",
+              top: 0,
+              right: 0,
+              bottom: 0,
+              width: 280,
+              zIndex: 50,
+              backgroundColor: "#ffffff",
+              display: "flex",
+              flexDirection: "column",
+              boxShadow: "-4px 0 24px rgba(0,0,0,0.12)",
+            }}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5 text-gray-400">
-              <path d="M20 21a8 8 0 0 0-16 0" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-            {accountLabel}
-          </Link>
-        </div>
-      </div>
+            {/* Header */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 20px", borderBottom: "1px solid #f0f0f0" }}>
+              <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", color: "#9ca3af", textTransform: "uppercase" }}>
+                Menu
+              </span>
+              <button
+                type="button"
+                aria-label="Fechar menu"
+                onClick={() => setOpen(false)}
+                style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, borderRadius: "50%", border: "none", backgroundColor: "#f3f4f6", cursor: "pointer" }}
+              >
+                <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                  <path d="M1 1l12 12M13 1L1 13" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Nav links */}
+            <nav style={{ flex: 1, overflowY: "auto", padding: "10px 12px", display: "flex", flexDirection: "column", gap: 2 }}>
+              {navItems.map((item) => {
+                const active = pathname.startsWith(item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    style={{
+                      display: "block",
+                      padding: "12px 14px",
+                      borderRadius: 10,
+                      fontSize: 15,
+                      fontWeight: 500,
+                      textDecoration: "none",
+                      color: active ? "#1d6fb8" : "#374151",
+                      backgroundColor: active ? "#eff6ff" : "transparent",
+                    }}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
+
+            {/* Footer — account */}
+            <div style={{ borderTop: "1px solid #f0f0f0", padding: "10px 12px" }}>
+              <Link
+                href={`/${lang}/account`}
+                style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 14px", borderRadius: 10, fontSize: 15, fontWeight: 500, color: "#374151", textDecoration: "none" }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" width={18} height={18}>
+                  <path d="M20 21a8 8 0 0 0-16 0" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                {accountLabel}
+              </Link>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 }
