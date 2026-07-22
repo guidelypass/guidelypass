@@ -36,8 +36,8 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-5 flex items-end justify-between sm:mb-8">
             <div>
-              <h2 className="text-2xl font-semibold text-ink sm:text-3xl">{dict.home.destinationsTitle}</h2>
-              <p className="mt-1 text-sm text-gray-500 sm:text-base sm:text-gray-600">{dict.home.destinationsSubtitle}</p>
+              <h2 className="text-lg font-semibold text-ink sm:text-3xl">{dict.home.destinationsTitle}</h2>
+              <p className="mt-0.5 text-xs text-gray-500 sm:mt-1 sm:text-base sm:text-gray-600">{dict.home.destinationsSubtitle}</p>
             </div>
             <Link href={`/${locale}/destinations`} className="shrink-0 text-sm font-semibold text-brand-600 transition-colors duration-200 hover:text-brand-700">
               {dict.home.viewAll}
@@ -62,8 +62,8 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
       <section className="border-t border-gray-100 bg-gray-50 py-10 sm:py-14">
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-5 sm:mb-8">
-            <h2 className="text-2xl font-semibold text-ink sm:text-3xl">{dict.home.experiencesTitle}</h2>
-            <p className="mt-1 text-sm text-gray-500 sm:text-base sm:text-gray-600">{dict.home.experiencesSubtitle}</p>
+            <h2 className="text-lg font-semibold text-ink sm:text-3xl">{dict.home.experiencesTitle}</h2>
+            <p className="mt-0.5 text-xs text-gray-500 sm:mt-1 sm:text-base sm:text-gray-600">{dict.home.experiencesSubtitle}</p>
           </div>
           <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
             {experiences.map((experience) => (
