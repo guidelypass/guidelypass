@@ -34,6 +34,8 @@ const de = {
     ctaText:
       "Wir stellen gerade die ersten Reiseführer fertig. Melden Sie sich, um benachrichtigt zu werden, sobald sie verfügbar sind.",
     ctaButton: "Benachrichtigt werden",
+    newsTitle: "Reise-Nachrichten",
+    newsSubtitle: "Die neuesten Nachrichten aus der Welt des Reisens.",
   },
   destinationPage: {
     country: "Land",
@@ -120,8 +122,6 @@ const de = {
         description: "Viertel, die besser gemieden werden, Notfallnummern und wie man mit unerwarteten Situationen umgeht.",
       },
     ],
-    newsTitle: "Reise-Nachrichten",
-    newsSubtitle: "Die neuesten Nachrichten aus der Welt des Reisens.",
     ctaHeading: "Bereit, Ihre Reise zu planen?",
     ctaSubtitle:
       "Stöbern Sie in den verfügbaren Reisezielen oder kontaktieren Sie uns, um zu erfahren, wann neue Reiseführer erscheinen.",

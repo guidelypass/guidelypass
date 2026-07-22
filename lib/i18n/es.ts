@@ -34,6 +34,8 @@ const es = {
     ctaText:
       "Estamos finalizando las guías para los primeros destinos. Contáctanos para que te avisemos cuando estén disponibles.",
     ctaButton: "Quiero que me avisen",
+    newsTitle: "Noticias de Viaje",
+    newsSubtitle: "Las últimas noticias del mundo de los viajes.",
   },
   destinationPage: {
     country: "País",
@@ -120,8 +122,6 @@ const es = {
         description: "Zonas que conviene evitar, teléfonos de emergencia y cómo actuar ante lo inesperado.",
       },
     ],
-    newsTitle: "Noticias de Viaje",
-    newsSubtitle: "Las últimas noticias del mundo de los viajes.",
     ctaHeading: "¿Listo para planear tu viaje?",
     ctaSubtitle:
       "Explora los destinos disponibles o contáctanos para saber cuándo salen nuevas guías.",

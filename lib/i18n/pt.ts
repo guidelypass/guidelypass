@@ -34,6 +34,8 @@ const pt = {
     ctaText:
       "Estamos finalizando os guias para os primeiros destinos. Entre em contato para ser avisado quando estiverem disponíveis.",
     ctaButton: "Quero ser avisado",
+    newsTitle: "Notícias de Viagem",
+    newsSubtitle: "As últimas novidades do mundo das viagens.",
   },
   destinationPage: {
     country: "País",
@@ -127,8 +129,6 @@ const pt = {
           "Áreas a evitar, contatos de emergência e como agir em situações inesperadas.",
       },
     ],
-    newsTitle: "Notícias de Viagem",
-    newsSubtitle: "As últimas novidades do mundo das viagens.",
     ctaHeading: "Pronto para planejar sua viagem?",
     ctaSubtitle:
       "Explore os destinos disponíveis ou entre em contato para saber quando novos guias serão lançados.",

@@ -34,6 +34,8 @@ const en = {
     ctaText:
       "We're finalizing guides for the first destinations. Get in touch to be notified when they're available.",
     ctaButton: "I want to be notified",
+    newsTitle: "Travel News",
+    newsSubtitle: "Latest news from around the world of travel.",
   },
   destinationPage: {
     country: "Country",
@@ -126,8 +128,6 @@ const en = {
           "Areas to avoid, emergency contacts and how to handle unexpected situations.",
       },
     ],
-    newsTitle: "Travel News",
-    newsSubtitle: "Latest news from around the world of travel.",
     ctaHeading: "Ready to plan your trip?",
     ctaSubtitle:
       "Explore available destinations or get in touch to know when new guides launch.",
