@@ -463,6 +463,7 @@ const de = {
     mustOrder: "Bestellen:",
     durationLabel: "Dauer",
     costLabel: "Eintritt",
+    openMaps: "In Maps öffnen",
   },
 };
 

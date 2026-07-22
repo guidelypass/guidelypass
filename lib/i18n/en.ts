@@ -469,6 +469,7 @@ const en = {
     mustOrder: "Order:",
     durationLabel: "Duration",
     costLabel: "Entry",
+    openMaps: "Open in Maps",
   },
 };
 

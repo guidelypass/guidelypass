@@ -463,6 +463,7 @@ const es = {
     mustOrder: "Pide:",
     durationLabel: "Duración",
     costLabel: "Entrada",
+    openMaps: "Ver en Maps",
   },
 };
 

@@ -463,6 +463,7 @@ const fr = {
     mustOrder: "À commander :",
     durationLabel: "Durée",
     costLabel: "Entrée",
+    openMaps: "Voir sur Maps",
   },
 };
 

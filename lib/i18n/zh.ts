@@ -457,6 +457,7 @@ const zh = {
     mustOrder: "推荐点：",
     durationLabel: "时长",
     costLabel: "门票",
+    openMaps: "在地图中查看",
   },
 };
 

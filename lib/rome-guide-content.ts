@@ -21,6 +21,7 @@ export type Attraction = {
   duration: string;
   cost: string;
   image: string;
+  mapsUrl?: string;
 };
 
 export type Top5Item = {
@@ -1451,10 +1452,73 @@ const en: RomeContent = {
   },
 };
 
+// ─── Maps URLs (same for all locales, order matches attractions array) ─────────
+
+const mapsUrls: string[] = [
+  // Monuments
+  "https://maps.google.com/?q=Colosseum,Rome,Italy",
+  "https://maps.google.com/?q=Roman+Forum,Rome,Italy",
+  "https://maps.google.com/?q=Palatine+Hill,Rome,Italy",
+  "https://maps.google.com/?q=Pantheon,Rome,Italy",
+  "https://maps.google.com/?q=Castel+Sant%27Angelo,Rome,Italy",
+  "https://maps.google.com/?q=Arch+of+Constantine,Rome,Italy",
+  "https://maps.google.com/?q=Circus+Maximus,Rome,Italy",
+  "https://maps.google.com/?q=Via+Appia+Antica,Rome,Italy",
+  // Museums
+  "https://maps.google.com/?q=Vatican+Museums,Vatican+City",
+  "https://maps.google.com/?q=Galleria+Borghese,Rome,Italy",
+  "https://maps.google.com/?q=Capitoline+Museums,Rome,Italy",
+  "https://maps.google.com/?q=Centrale+Montemartini,Rome,Italy",
+  "https://maps.google.com/?q=Palazzo+Massimo+alle+Terme,Rome,Italy",
+  // Churches
+  "https://maps.google.com/?q=St+Peter%27s+Basilica,Vatican+City",
+  "https://maps.google.com/?q=San+Giovanni+in+Laterano,Rome,Italy",
+  "https://maps.google.com/?q=San+Clemente+al+Laterano,Rome,Italy",
+  "https://maps.google.com/?q=San+Luigi+dei+Francesi,Rome,Italy",
+  "https://maps.google.com/?q=Santa+Maria+in+Trastevere,Rome,Italy",
+  // Squares & Fountains
+  "https://maps.google.com/?q=Trevi+Fountain,Rome,Italy",
+  "https://maps.google.com/?q=Piazza+Navona,Rome,Italy",
+  "https://maps.google.com/?q=Spanish+Steps,Rome,Italy",
+  "https://maps.google.com/?q=Piazza+del+Popolo,Rome,Italy",
+  "https://maps.google.com/?q=Campo+de%27+Fiori,Rome,Italy",
+  "https://maps.google.com/?q=Altare+della+Patria,Rome,Italy",
+  // Parks
+  "https://maps.google.com/?q=Villa+Borghese,Rome,Italy",
+  "https://maps.google.com/?q=Villa+Pamphilj,Rome,Italy",
+  "https://maps.google.com/?q=Villa+Ada,Rome,Italy",
+  "https://maps.google.com/?q=Villa+Torlonia,Rome,Italy",
+  // Neighborhoods
+  "https://maps.google.com/?q=Trastevere,Rome,Italy",
+  "https://maps.google.com/?q=Quartiere+Coppede,Rome,Italy",
+  "https://maps.google.com/?q=Rione+Monti,Rome,Italy",
+  "https://maps.google.com/?q=Testaccio,Rome,Italy",
+  "https://maps.google.com/?q=Pigneto,Rome,Italy",
+  "https://maps.google.com/?q=EUR,Rome,Italy",
+  "https://maps.google.com/?q=Garbatella,Rome,Italy",
+  "https://maps.google.com/?q=Flaminio,Rome,Italy",
+  // Experiences
+  "https://maps.google.com/?q=Knights+of+Malta+Keyhole,Aventine+Hill,Rome,Italy",
+  "https://maps.google.com/?q=Catacombe+di+Domitilla,Rome,Italy",
+  "https://maps.google.com/?q=Parco+degli+Acquedotti,Rome,Italy",
+  "https://maps.google.com/?q=Ostia+Antica,Rome,Italy",
+  "https://maps.google.com/?q=Terme+di+Caracalla,Rome,Italy",
+  "https://maps.google.com/?q=Domus+Aurea,Rome,Italy",
+  "https://maps.google.com/?q=Porta+Portese+Market,Rome,Italy",
+  "https://maps.google.com/?q=Villa+d%27Este,Tivoli,Italy",
+];
+
 // ─── Exports ──────────────────────────────────────────────────────────────────
 
 const contentMap: Record<string, RomeContent> = { pt, en };
 
 export function getRomeContent(locale: Locale): RomeContent {
-  return contentMap[locale] ?? contentMap.en;
+  const base = contentMap[locale] ?? contentMap.en;
+  return {
+    ...base,
+    attractions: base.attractions.map((a, i) => ({
+      ...a,
+      mapsUrl: mapsUrls[i] ?? "",
+    })),
+  };
 }

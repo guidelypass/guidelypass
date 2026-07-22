@@ -470,6 +470,7 @@ const pt = {
     mustOrder: "Peça:",
     durationLabel: "Duração",
     costLabel: "Entrada",
+    openMaps: "Ver no Maps",
   },
 };
 
