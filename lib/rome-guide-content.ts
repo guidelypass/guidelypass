@@ -436,7 +436,7 @@ const pt: RomeContent = {
       weather: "outdoor",
       profiles: ["family", "couple", "friends"],
       description:
-        "O maior parque público de Roma, com 80 hectares de jardins formais, fontes, lagos e pavilhões. Além da Galleria Borghese, abriga o Museo Carlo Bilotti, o zoológico e o terraço do Pincio com a melhor vista panorâmica da cidade ao pôr do sol. Um oásis de tranquilidade no coração da cidade.",
+        "Com cerca de 80 hectares de jardins, fontes, lagos e pavilhões, Villa Borghese é um dos maiores parques centrais de Roma e o principal pulmão verde da cidade. Além da Galleria Borghese, abriga o Bioparco (zoológico) e o terraço do Pincio, de onde se tem uma das vistas mais bonitas de Roma ao pôr do sol. Um oásis de tranquilidade a poucos passos do caos do centro.",
       duration: "2–4 horas",
       cost: "Gratuito",
       image: "https://images.unsplash.com/photo-1571462574-a9e49b8f19a3?w=900&q=80",
@@ -958,7 +958,7 @@ const en: RomeContent = {
       weather: "outdoor" as const,
       profiles: ["family", "couple", "friends"] as ProfileTag[],
       description:
-        "Rome's largest public park, with 80 hectares of formal gardens, fountains, lakes and pavilions. Besides the Galleria Borghese, it houses the Carlo Bilotti Museum, the zoo and the Pincio terrace with the best panoramic view of the city at sunset. An oasis of calm in the heart of the city.",
+        "With around 80 hectares of gardens, fountains, lakes and pavilions, Villa Borghese is one of Rome's largest central parks and the city's main green lung. Besides the Galleria Borghese, it houses the Bioparco (zoo) and the Pincio terrace, which offers one of the finest views of Rome at sunset. An oasis of calm just steps from the chaos of the city centre.",
       duration: "2–4 hours",
       cost: "Free",
       image: "https://images.unsplash.com/photo-1571462574-a9e49b8f19a3?w=900&q=80",
