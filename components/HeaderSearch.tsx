@@ -93,7 +93,7 @@ export default function HeaderSearch({ lang, destinations, placeholder, searchLa
             onChange={(e) => setQuery(e.target.value)}
             onBlur={() => setTimeout(closeSearch, 150)}
             placeholder={placeholder}
-            className="w-48 rounded-full border border-brand-200 bg-white px-4 py-1.5 text-sm text-ink shadow-sm outline-none transition-all duration-200 focus:border-brand-400 focus:shadow-md sm:w-64"
+            className="w-[min(144px,calc(100vw-200px))] rounded-full border border-brand-200 bg-white px-4 py-1.5 text-sm text-ink shadow-sm outline-none transition-all duration-200 focus:border-brand-400 focus:shadow-md sm:w-64"
           />
         </form>
 
