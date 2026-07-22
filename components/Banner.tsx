@@ -21,7 +21,7 @@ export default function Banner({ lang, dict }: Props) {
 
   return (
     <section>
-      <div className="relative h-[150px] w-full overflow-hidden sm:hidden">
+      <div className="relative h-[135px] w-full overflow-hidden sm:hidden">
         <Image src={src} alt={alt} fill sizes="100vw" className="object-cover object-center" priority />
       </div>
       <Image src={src} alt={alt} width={1672} height={818} sizes="100vw" className="hidden h-auto w-full sm:block" priority />
