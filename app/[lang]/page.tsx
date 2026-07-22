@@ -5,8 +5,6 @@ import { getDictionary, isValidLocale, type Locale } from "@/lib/i18n";
 import { regions, experiences, siteConfig } from "@/lib/site-config";
 import { notFound } from "next/navigation";
 import Banner from "@/components/Banner";
-import NewsSection from "@/components/NewsSection";
-import { fetchTravelNews } from "@/lib/news";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -20,10 +18,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   if (!isValidLocale(lang)) notFound();
   const locale = lang as Locale;
 
-  const [dict, newsArticles] = await Promise.all([
-    getDictionary(locale),
-    fetchTravelNews(locale, 6),
-  ]);
+  const dict = await getDictionary(locale);
 
   const destinations = regions.flatMap((region) =>
     region.destinations.map((d) => ({
@@ -85,9 +80,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         </div>
       </section>
 
-      <NewsSection articles={newsArticles} dict={dict} />
-
-      <section className="bg-brand-900 py-12 text-center sm:py-14">
+<section className="bg-brand-900 py-12 text-center sm:py-14">
         <div className="mx-auto max-w-xl px-4">
           <h2 className="text-2xl font-semibold text-white sm:text-3xl">{dict.home.ctaHeading}</h2>
           <p className="mt-3 text-sm text-brand-200 sm:text-base">{dict.home.ctaText}</p>
