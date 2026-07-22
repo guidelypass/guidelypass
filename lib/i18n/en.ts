@@ -126,6 +126,8 @@ const en = {
           "Areas to avoid, emergency contacts and how to handle unexpected situations.",
       },
     ],
+    newsTitle: "Travel News",
+    newsSubtitle: "Latest news from around the world of travel.",
     ctaHeading: "Ready to plan your trip?",
     ctaSubtitle:
       "Explore available destinations or get in touch to know when new guides launch.",

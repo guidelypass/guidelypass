@@ -127,6 +127,8 @@ const pt = {
           "Áreas a evitar, contatos de emergência e como agir em situações inesperadas.",
       },
     ],
+    newsTitle: "Notícias de Viagem",
+    newsSubtitle: "As últimas novidades do mundo das viagens.",
     ctaHeading: "Pronto para planejar sua viagem?",
     ctaSubtitle:
       "Explore os destinos disponíveis ou entre em contato para saber quando novos guias serão lançados.",

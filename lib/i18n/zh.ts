@@ -115,6 +115,8 @@ const zh = {
         description: "需要避开的区域、紧急联系电话，以及遇到突发情况时的应对方法。",
       },
     ],
+    newsTitle: "旅行资讯",
+    newsSubtitle: "来自旅行世界的最新动态。",
     ctaHeading: "准备好规划您的旅程了吗？",
     ctaSubtitle: "浏览现有目的地，或联系我们了解新指南的发布计划。",
     ctaButton: "浏览目的地",

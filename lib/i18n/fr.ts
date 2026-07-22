@@ -120,6 +120,8 @@ const fr = {
         description: "Zones à éviter, numéros d'urgence et comment réagir face à l'inattendu.",
       },
     ],
+    newsTitle: "Actualités Voyage",
+    newsSubtitle: "Les dernières nouvelles du monde du voyage.",
     ctaHeading: "Prêt à planifier votre voyage ?",
     ctaSubtitle:
       "Explorez les destinations disponibles ou contactez-nous pour savoir quand de nouveaux guides sortent.",

@@ -5,6 +5,8 @@ import { getDictionary, isValidLocale, type Locale } from "@/lib/i18n";
 import { regions, experiences, siteConfig } from "@/lib/site-config";
 import { notFound } from "next/navigation";
 import Banner from "@/components/Banner";
+import NewsSection from "@/components/NewsSection";
+import { fetchTravelNews } from "@/lib/news";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -16,8 +18,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 export default async function HomePage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   if (!isValidLocale(lang)) notFound();
-  const dict = await getDictionary(lang);
   const locale = lang as Locale;
+
+  const [dict, newsArticles] = await Promise.all([
+    getDictionary(locale),
+    fetchTravelNews(locale, 6),
+  ]);
 
   const destinations = regions.flatMap((region) =>
     region.destinations.map((d) => ({
@@ -78,6 +84,8 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
           </div>
         </div>
       </section>
+
+      <NewsSection articles={newsArticles} dict={dict} />
 
       <section className="bg-brand-900 py-12 text-center sm:py-14">
         <div className="mx-auto max-w-xl px-4">
