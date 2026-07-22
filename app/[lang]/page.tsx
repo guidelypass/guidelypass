@@ -46,7 +46,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
           <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
             {destinations.map((destination) => (
               <Link key={destination.slug} href={`/${locale}/destinations/${destination.slug}`} className="group overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md">
-                <div className="relative aspect-[3/4] w-full overflow-hidden bg-brand-100 sm:aspect-[4/3]">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-brand-100">
                   <Image src={destination.image} alt={destination.name} fill sizes="(min-width: 1024px) 280px, (min-width: 640px) 45vw, 47vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div className="p-3 sm:p-4">
